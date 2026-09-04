@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LisAI Interpreter · Vicio Di Cara</title>
+<meta name="description" content="Real-time Italian Sign Language recognition: MediaPipe Holistic, 543 keypoints, 87.3% fingerspelling accuracy at 30+ FPS. Case study.">
+<meta name="theme-color" content="#6A46EC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="../"><span class="tilde">~/</span>viciodc</a>
+    <ul>
+      <li><a href="#demo">Demo</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#research">Research track</a></li>
+      <li><a href="../#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="case-hero">
+  <div class="wrap">
+    <a class="crumb" href="../">← All projects</a>
+    <h1>LisAI Interpreter</h1>
+    <p class="lede">Real-time recognition of Italian Sign Language (LIS), from webcam frames to Italian text. Built on a custom dataset, because for LIS, unlike ASL, large public corpora barely exist.</p>
+    <div class="case-meta">
+      <span class="tag hl">Computer vision · deep learning research</span>
+      <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">MediaPipe</span><span class="tag">OpenCV</span><span class="tag">FFmpeg</span>
+    </div>
+    <div class="hero-links">
+      <a class="btn primary" href="https://github.com/VicDc/LIS_Ai_Capstone">View the code</a>
+      <a class="btn" href="#demo">Watch it run</a>
+    </div>
+  </div>
+</header>
+
+<div class="wave" aria-hidden="true">~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~</div>
+
+<main id="main">
+
+<section aria-labelledby="overview-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="overview-h">Overview</h2></div>
+    <div class="stats">
+      <div class="stat"><div class="n">87.3%</div><div class="l">static fingerspelling accuracy · 26 classes</div></div>
+      <div class="stat"><div class="n">30+</div><div class="l">FPS real-time inference</div></div>
+      <div class="stat"><div class="n">543</div><div class="l">keypoints per frame · face, pose, hands</div></div>
+      <div class="stat"><div class="n">2</div><div class="l">tiers · static letters + dynamic words (research)</div></div>
+    </div>
+    <div class="prose">
+      <p>LIS is a full language with its own grammar, not signed Italian. This project tackles the perception layer: a webcam stream goes through <strong>MediaPipe Holistic</strong>, which extracts 543 landmarks per frame (468 face mesh, 33 pose, 42 hand points), normalized relative to the shoulder midpoint so the model is invariant to distance and framing.</p>
+      <p>The system is two-tier. Tier one, static fingerspelling: a compact MLP / 1D-CNN over 63-dimensional hand vectors classifies the 26 letters at 87.3% accuracy in real time. Tier two, word-level recognition over landmark sequences, was explored as a research track with sequence models.</p>
+    </div>
+  </div>
+</section>
+
+<section id="demo" class="alt" aria-labelledby="demo-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="demo-h">Demo</h2></div>
+    <div class="gallery wide">
+      <figure class="shot"><img data-ph="tall" src="../assets/img/lisai/demo-fingerspelling.gif" alt="Real-time fingerspelling recognition from webcam"><figcaption>Static letter recognition, live at 30+ FPS</figcaption></figure>
+      <figure class="shot"><img data-ph="tall" src="../assets/img/lisai/demo-landmarks.gif" alt="MediaPipe Holistic landmarks drawn on the signer"><figcaption>543 landmarks extracted per frame</figcaption></figure>
+    </div>
+    <div class="gallery">
+      <figure class="shot"><img data-ph src="../assets/img/lisai/pipeline-diagram.png" alt="Diagram of the LisAI processing pipeline"><figcaption>Pipeline: webcam → Holistic → normalization → classifier → text</figcaption></figure>
+      <figure class="shot"><img data-ph src="../assets/img/lisai/augmentation-examples.png" alt="Examples of augmented training frames"><figcaption>FFmpeg augmentation: flips, rotation, speed, photometric</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="how" aria-labelledby="how-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="how-h">How it works</h2></div>
+    <ol class="pipe">
+      <li><strong>Data expansion.</strong> A custom FFmpeg augmentation engine multiplies the dataset: horizontal flips for handedness swap, ±15° rotation and scale jitter, 0.8x to 1.2x speed changes, Gaussian blur and brightness shifts.</li>
+      <li><strong>Landmark extraction.</strong> MediaPipe Holistic produces 543 keypoints per frame, spatially normalized to the shoulder midpoint.</li>
+      <li><strong>Classification.</strong> Static tier: MLP / 1D-CNN on 63-dim hand vectors (3 Dense layers, ReLU, Dropout 0.3). Dynamic tier: sequence models over (T, 1662) feature matrices with forward padding and masking for variable-length signs (20 to 180 frames).</li>
+      <li><strong>Linguistic refinement.</strong> A Beam Search context engine combines model confidence with a word-frequency dictionary, then a local LLM (Gemma via LM Studio) turns LIS glosses into grammatical Italian.</li>
+    </ol>
+
+    <h3 style="font-size:var(--fs-h3);font-weight:700;margin:var(--s4) 0 var(--s2)">From gloss to Italian</h3>
+    <div class="codeblock">
+<span class="k">gloss  →</span> IO MANGIARE MELA<br>
+<span class="k">llm    →</span> <span class="s">"Sto mangiando una mela"</span><br>
+<span class="k">gloss  →</span> DOMANI IO ANDARE MARE<br>
+<span class="k">llm    →</span> <span class="s">"Domani vado al mare"</span>
+    </div>
+  </div>
+</section>
+
+<section id="research" class="alt" aria-labelledby="research-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="research-h">Research track</h2></div>
+    <div class="prose">
+      <p>Word-level recognition is genuinely harder than fingerspelling: signs are dynamic, variable-length, and disambiguated by context. The research track compared <strong>Bi-LSTM</strong> (bidirectional layers let the model see how a sign ends before classifying how it began), <strong>Transformer</strong> encoders (parallel attention across the full gesture sequence) and <strong>GRU</strong> as a lighter alternative, trained in mixed precision (FP16) with checkpoint management.</p>
+    </div>
+    <div class="note"><strong>Honest status.</strong> The static tier (letters) is the working, measured result: 87.3% on 26 classes in real time. The dynamic tier (words) is a research direction with a working training pipeline, reported here as exploration, not as a finished product.</div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="casenav">
+      <a class="btn" href="../malaria/">← Prev: Malaria AI Scope</a>
+      <a class="btn" href="../business-plan/">Next: Business Plan AI →</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

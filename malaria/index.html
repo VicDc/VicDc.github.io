@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malaria AI Scope · Vicio Di Cara</title>
+<meta name="description" content="YOLOv11 instance segmentation of malaria parasites across 17 classes, 62% mAP50. Case study with slide gallery and before/after segmentation.">
+<meta name="theme-color" content="#6A46EC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="../"><span class="tilde">~/</span>viciodc</a>
+    <ul>
+      <li><a href="#slides">Slides</a></li>
+      <li><a href="#pipeline">Pipeline</a></li>
+      <li><a href="#decisions">Decisions</a></li>
+      <li><a href="../#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="case-hero">
+  <div class="wrap">
+    <a class="crumb" href="../">← All projects</a>
+    <h1>Malaria AI Scope</h1>
+    <p class="lede">Automated detection and classification of malaria parasites in blood smear images, built to work across heterogeneous real-world datasets rather than one clean benchmark.</p>
+    <div class="case-meta">
+      <span class="tag hl">🥇 1st place · AWS University Engagement Program</span>
+      <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">YOLOv11-seg</span><span class="tag">OpenCV</span><span class="tag">Google Colab</span>
+    </div>
+    <div class="hero-links">
+      <a class="btn primary" href="https://github.com/VicDc/MalariaAI-Scope">View the code</a>
+      <a class="btn" href="#slides">See the slides</a>
+    </div>
+  </div>
+</header>
+
+<div class="wave" aria-hidden="true">~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~</div>
+
+<main id="main">
+
+<section aria-labelledby="overview-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="overview-h">Overview</h2></div>
+    <div class="stats">
+      <div class="stat"><div class="n">17</div><div class="l">classes · 4 species × 4 life stages + generic</div></div>
+      <div class="stat"><div class="n">62%</div><div class="l">mAP50 on the full heterogeneous test corpus</div></div>
+      <div class="stat"><div class="n">7+</div><div class="l">datasets unified · masks, COCO JSON, TXT</div></div>
+      <div class="stat"><div class="n">4</div><div class="l">Plasmodium species · falciparum, vivax, ovale, malariae</div></div>
+    </div>
+    <div class="prose">
+      <p>Malaria diagnosis in resource-limited settings still depends on a trained microscopist examining blood smears by eye. This project automates that step: given a microscopic image, a <strong>YOLOv11 instance segmentation</strong> model localizes every parasite at pixel level and classifies its species and life stage in a single pass, feeding a real-time inference GUI built for clinical review.</p>
+      <p>The hard part was not the model. It was the data: public malaria datasets disagree on everything, from annotation format (binary masks, COCO-style JSON, plain-text circular and rectangular boxes) to class definitions and image quality. The pipeline normalizes all of them into one YOLO segmentation corpus, with negative samples of healthy cells to control false positives.</p>
+    </div>
+  </div>
+</section>
+
+<section id="slides" class="alt" aria-labelledby="slides-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="slides-h">The slides</h2>
+      <p>Drag the handle to compare the raw blood smear with the model's segmentation masks and class labels.</p>
+    </div>
+
+    <div class="ba">
+      <img data-ph src="../assets/img/malaria/ba-raw.jpg" alt="Raw blood smear, before segmentation">
+      <img data-ph class="top" src="../assets/img/malaria/ba-segmented.jpg" alt="Same smear with YOLOv11 segmentation overlay" aria-hidden="true">
+      <div class="handle"></div>
+      <input type="range" min="0" max="100" value="50" aria-label="Comparison slider between raw and segmented image">
+    </div>
+    <div class="ba-labels"><span>Raw smear</span><span>YOLOv11 segmentation</span></div>
+
+    <h3 style="font-size:var(--fs-h3);font-weight:700;margin:var(--s4) 0 var(--s2)">Slide gallery</h3>
+    <div class="gallery">
+      <figure class="shot"><img data-ph src="../assets/img/malaria/slide-01.jpg" alt="P. falciparum ring stage, segmented"><figcaption>P. falciparum · ring</figcaption></figure>
+      <figure class="shot"><img data-ph src="../assets/img/malaria/slide-02.jpg" alt="P. falciparum trophozoite, segmented"><figcaption>P. falciparum · trophozoite</figcaption></figure>
+      <figure class="shot"><img data-ph src="../assets/img/malaria/slide-03.jpg" alt="P. vivax schizont, segmented"><figcaption>P. vivax · schizont</figcaption></figure>
+      <figure class="shot"><img data-ph src="../assets/img/malaria/slide-04.jpg" alt="P. vivax gametocyte, segmented"><figcaption>P. vivax · gametocyte</figcaption></figure>
+      <figure class="shot"><img data-ph src="../assets/img/malaria/slide-05.jpg" alt="P. ovale, segmented"><figcaption>P. ovale</figcaption></figure>
+      <figure class="shot"><img data-ph src="../assets/img/malaria/slide-06.jpg" alt="P. malariae, segmented"><figcaption>P. malariae</figcaption></figure>
+      <figure class="shot"><img data-ph src="../assets/img/malaria/slide-07.jpg" alt="Multiple parasites in one field, segmented"><figcaption>Dense field · multiple detections</figcaption></figure>
+      <figure class="shot"><img data-ph src="../assets/img/malaria/slide-08.jpg" alt="Healthy cells, no detection (negative sample)"><figcaption>Healthy cells · negative sample</figcaption></figure>
+    </div>
+
+    <h3 style="font-size:var(--fs-h3);font-weight:700;margin:var(--s4) 0 var(--s2)">Clinical inference GUI</h3>
+    <div class="gallery wide">
+      <figure class="shot"><img data-ph="tall" src="../assets/img/malaria/gui-screenshot.png" alt="Desktop GUI running real-time inference on a smear"><figcaption>Real-time inference through the Tkinter desktop app</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="pipeline" aria-labelledby="pipeline-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="pipeline-h">Pipeline</h2></div>
+    <ol class="pipe">
+      <li><strong>Debug analysis.</strong> Audit every source dataset: formats, class definitions, annotation quality, corrupted or incomplete labels.</li>
+      <li><strong>Data processing.</strong> Convert masks, COCO JSON and TXT coordinates into one YOLO segmentation format, with smart class mapping and background-cell filtering (WBC, RBC, debris).</li>
+      <li><strong>Training.</strong> YOLOv11-seg with incremental learning across datasets, checkpoint saving and recovery, so the corpus can grow without full retraining.</li>
+      <li><strong>Evaluation &amp; visualization.</strong> mAP50 and mAP50-95, per-class precision and recall, segmentation overlays for clinical interpretation.</li>
+    </ol>
+  </div>
+</section>
+
+<section id="decisions" class="alt" aria-labelledby="decisions-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="decisions-h">Design decisions</h2></div>
+    <div class="prose">
+      <h3>Flat 17 classes, not species-then-stage</h3>
+      <p>A hierarchical design (first classify the species, then the life stage) looks cleaner on paper. It was rejected because early-stage parasites look alike across species: the hierarchy would discard exactly the distinguishing signal the model needs. The flat 17-class head lets the network learn species and stage jointly.</p>
+      <h3>Report the honest number</h3>
+      <p>62% mAP50 is measured on the full heterogeneous test corpus, spanning all source datasets and their quality range, not on a narrower favourable slice. On multi-class medical segmentation with this data diversity, the honest number is the one worth reporting.</p>
+    </div>
+    <div class="note"><strong>Scope note.</strong> This is a research and screening-support system, not a certified diagnostic device. Training ran on Google Colab; the award refers to the AWS University Engagement Program competition.</div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="casenav">
+      <a class="btn" href="../">← All projects</a>
+      <a class="btn" href="../lisai/">Next: LisAI Interpreter →</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

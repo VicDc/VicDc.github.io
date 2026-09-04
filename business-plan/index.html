@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Plan AI · Vicio Di Cara</title>
+<meta name="description" content="Local multi-agent system that drafts business plans and verifies the numbers with deterministic Python. Case study.">
+<meta name="theme-color" content="#6A46EC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="../"><span class="tilde">~/</span>viciodc</a>
+    <ul>
+      <li><a href="#architecture">Architecture</a></li>
+      <li><a href="#verification">Verification</a></li>
+      <li><a href="#output">Output</a></li>
+      <li><a href="../#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="case-hero">
+  <div class="wrap">
+    <a class="crumb" href="../">← All projects</a>
+    <h1>Business Plan AI</h1>
+    <p class="lede">A local, privacy-first multi-agent system that turns a raw business idea into a structured plan for Italian micro-businesses, and then refuses to trust its own arithmetic.</p>
+    <div class="case-meta">
+      <span class="tag hl">Active development</span>
+      <span class="tag">Python</span><span class="tag">Multi-Agent</span><span class="tag">LM Studio</span><span class="tag">Ollama</span><span class="tag">Plotly</span><span class="tag">XLSX</span>
+    </div>
+    <div class="hero-links">
+      <a class="btn primary" href="https://github.com/VicDc/business-plan-ai">View the code</a>
+      <a class="btn" href="#verification">The verification layer</a>
+    </div>
+  </div>
+</header>
+
+<div class="wave" aria-hidden="true">~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~</div>
+
+<main id="main">
+
+<section id="architecture" aria-labelledby="architecture-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="architecture-h">Architecture</h2></div>
+    <div class="stats">
+      <div class="stat"><div class="n">6+1</div><div class="l">specialist agents + Orchestrator</div></div>
+      <div class="stat"><div class="n">6</div><div class="l">LLM-based consistency checks</div></div>
+      <div class="stat"><div class="n">≤3</div><div class="l">revision cycles before manual-review fallback</div></div>
+      <div class="stat"><div class="n">5%</div><div class="l">tolerance in deterministic verification</div></div>
+    </div>
+    <div class="prose">
+      <p>A guided <strong>IntakeAgent</strong> normalizes free-text input into a structured business profile. Six specialist agents (Vision, Market, Team, Setup, Financial, Funding) then draft their sections under an <strong>Orchestrator</strong> that applies six LLM-based consistency checks and issues targeted revisions, up to three cycles, before a separate ReportWriter produces the final document. The whole system runs on local inference (LM Studio or Ollama, Gemma) with no cloud dependency, so a business idea never leaves the machine.</p>
+      <p>It reuses the same BaseAgent/Orchestrator pattern as Sherpa Alzheimer, with no agentic framework dependency: the orchestration loop is explicit, inspectable Python.</p>
+    </div>
+    <div class="gallery wide" style="margin-top:var(--s3)">
+      <figure class="shot"><img data-ph="tall" src="../assets/img/business-plan/architecture-diagram.png" alt="Architecture diagram: IntakeAgent, six specialists, Orchestrator, verification layer, ReportWriter"><figcaption>Agent flow: intake → specialists → consistency checks → verification → report</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="verification" class="alt" aria-labelledby="verification-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="verification-h">The verification layer</h2></div>
+    <blockquote class="quotebox">Computable ground truth should be computed, not delegated to a model.</blockquote>
+    <div class="prose">
+      <p>LLMs are unreliable at arithmetic, and a business plan is full of arithmetic. So after the agents converge, a <strong>pure-Python verification layer</strong> with no model in the loop re-derives every computable figure from the declared inputs: unit margin, break-even point, capital totals, funding coverage, revenue against addressable market. Any value diverging beyond 5% tolerance is flagged, and flagged rows export to XLSX for human review.</p>
+      <p>The table below shows the shape of the check (illustrative values, replace with a real export):</p>
+    </div>
+    <table class="tbl">
+      <caption class="tiny" style="text-align:left;margin-bottom:8px">Deterministic checks · 5% tolerance · illustrative values</caption>
+      <thead><tr><th scope="col">Check</th><th scope="col">Declared</th><th scope="col">Re-derived</th><th scope="col">Δ</th><th scope="col">Status</th></tr></thead>
+      <tbody>
+        <tr><td>Unit margin</td><td>€ 14.50</td><td>€ 14.50</td><td>0.0%</td><td class="ok">OK</td></tr>
+        <tr><td>Break-even (units/month)</td><td>310</td><td>316</td><td>1.9%</td><td class="ok">OK</td></tr>
+        <tr><td>Startup capital total</td><td>€ 42,000</td><td>€ 46,800</td><td>11.4%</td><td class="flag">Flag → review</td></tr>
+        <tr><td>Funding coverage</td><td>100%</td><td>89.7%</td><td>10.3%</td><td class="flag">Flag → review</td></tr>
+        <tr><td>Revenue vs. market</td><td>0.8%</td><td>0.8%</td><td>0.0%</td><td class="ok">OK</td></tr>
+      </tbody>
+    </table>
+    <div class="note"><strong>Two more deterministic choices.</strong> Charts are never rendered by the LLM: the FinancialAgent emits a structured chart spec and rendering is deterministic Plotly code. And when the revision loop does not converge, the system ships a partial report with a manual-review banner instead of a fabricated plan.</div>
+  </div>
+</section>
+
+<section id="output" aria-labelledby="output-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="output-h">Output</h2></div>
+    <div class="gallery wide">
+      <figure class="shot"><img data-ph="tall" src="../assets/img/business-plan/report-excerpt.png" alt="Excerpt of a generated business plan report"><figcaption>Report excerpt, generated locally</figcaption></figure>
+      <figure class="shot"><img data-ph="tall" src="../assets/img/business-plan/verification-xlsx.png" alt="Screenshot of the verification XLSX with flagged rows"><figcaption>Verification export with flagged rows</figcaption></figure>
+    </div>
+    <p class="prose" style="margin-top:var(--s3)">A full sample report (anonymized) will be downloadable here: <a href="../assets/files/business-plan-sample.pdf">business-plan-sample.pdf</a></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="casenav">
+      <a class="btn" href="../lisai/">← Prev: LisAI Interpreter</a>
+      <a class="btn" href="../watershed/">Next: Watershed-AI →</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+</body>
+</html>

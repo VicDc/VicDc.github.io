@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Watershed-AI · Vicio Di Cara</title>
+<meta name="description" content="Deterministic terrain-analysis pipeline: from a DEM to the best flood-injection point, ranked by cellular-automata simulation. Case study.">
+<meta name="theme-color" content="#6A46EC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="../"><span class="tilde">~/</span>viciodc</a>
+    <ul>
+      <li><a href="#visuals">Visuals</a></li>
+      <li><a href="#method">Method</a></li>
+      <li><a href="../#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="case-hero">
+  <div class="wrap">
+    <a class="crumb" href="../">← All projects</a>
+    <h1>Watershed-AI</h1>
+    <p class="lede">A terrain-analysis pipeline that takes a digital elevation model and finds the best point to inject water for a flood scenario: not the highest point, but the one that floods the largest area. Inspired by the problem Real Ice tackles in the Arctic, where to pump seawater onto ice to thicken it.</p>
+    <div class="case-meta">
+      <span class="tag hl">Side project</span>
+      <span class="tag">NumPy</span><span class="tag">SciPy</span><span class="tag">Plotly</span><span class="tag">GIS</span>
+    </div>
+    <div class="hero-links">
+      <a class="btn primary" href="https://github.com/VicDc/Watershed-AI">View the code</a>
+      <a class="btn" href="#visuals">See the simulations</a>
+    </div>
+  </div>
+</header>
+
+<div class="wave" aria-hidden="true">~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~</div>
+
+<main id="main">
+
+<section id="visuals" aria-labelledby="visuals-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="visuals-h">Simulations</h2></div>
+    <div class="gallery wide">
+      <figure class="shot"><img data-ph="tall" src="../assets/img/watershed/flood-3d-satellite.gif" alt="3D flood simulation animated over satellite imagery"><figcaption>Flood expansion over real satellite terrain, 3D view</figcaption></figure>
+      <figure class="shot"><img data-ph="tall" src="../assets/img/watershed/flood-2d.gif" alt="Top-down flood expansion animation"><figcaption>Cellular-automata water spread, top-down</figcaption></figure>
+    </div>
+    <div class="gallery">
+      <figure class="shot"><img data-ph src="../assets/img/watershed/dem-candidates.png" alt="DEM with detected candidate injection points"><figcaption>Candidate points, filtered by prominence</figcaption></figure>
+      <figure class="shot"><img data-ph src="../assets/img/watershed/ranking-map.png" alt="Final ranking map with winning candidate"><figcaption>Final ranking, winner marked</figcaption></figure>
+      <figure class="shot"><img data-ph src="../assets/img/watershed/comparison-chart.png" alt="Flooded area over time compared across candidates"><figcaption>Area(t) curves across candidates</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="method" class="alt" aria-labelledby="method-h">
+  <div class="wrap">
+    <div class="sec-head"><h2 id="method-h">Method</h2></div>
+    <ol class="pipe">
+      <li><strong>Ingestion.</strong> Load and clean the elevation grid from a public DEM (Copernicus GLO-30).</li>
+      <li><strong>Candidate selection.</strong> Local maxima filtered by prominence, never a plain elevation argmax: the highest point is rarely the best one.</li>
+      <li><strong>Flood simulation.</strong> Per candidate, a cellular-automata water spread over the depression-filled DEM (priority-flood), producing Area(t) and Area(Volume) curves.</li>
+      <li><strong>Ranking &amp; output.</strong> Comparison chart, hypsometric map with water overlay, 2D and 3D time-lapse animations over satellite imagery.</li>
+    </ol>
+    <div class="note"><strong>Honest scope.</strong> The core is deterministic NumPy/SciPy raster computation: there is no machine-learning or LLM component, and it is an exploratory tool, not a production flood-forecasting system. Results based on 30m public DEMs are flagged as resolution-limited by design.</div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="casenav">
+      <a class="btn" href="../business-plan/">← Prev: Business Plan AI</a>
+      <a class="btn" href="../">All projects →</a>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/site.js"></script>
+</body>
+</html>
