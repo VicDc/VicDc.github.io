@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/style.css">
+<script>!(function(){var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")})()</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -17,12 +18,18 @@
 <nav aria-label="Main">
   <div class="wrap">
     <a class="brand" href="../"><span class="tilde">~/</span>viciodc</a>
-    <ul>
-      <li><a href="#slides">Slides</a></li>
-      <li><a href="#pipeline">Pipeline</a></li>
-      <li><a href="#decisions">Decisions</a></li>
-      <li><a href="../#contact">Contact</a></li>
-    </ul>
+    <div class="nav-right">
+      <ul>
+        <li><a href="#slides">Slides</a></li>
+        <li><a href="#pipeline">Pipeline</a></li>
+        <li><a href="#decisions">Decisions</a></li>
+        <li><a href="../#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
+        <span class="icon-sun" aria-hidden="true">☀️</span>
+        <span class="icon-moon" aria-hidden="true">🌙</span>
+      </button>
+    </div>
   </div>
 </nav>
 
