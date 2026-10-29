@@ -1,19 +1,18 @@
 /* hero point cloud: one blood smear from Malaria AI Scope, raised by how dark each sample is,
    the cells under the YOLOv11 segmentation masks lit orange as "found".
    Turns once every seventy seconds, a sweep lights it every seven seconds.
-   Pauses off screen, on hover, on focus and under reduced motion. */
+   Runs only while its scene is the active one and the reel is running (reel.js owns pause). */
 (function () {
   var fig = document.querySelector('.cloud');
+  var reel = document.querySelector('.reel');
   var canvas = document.getElementById('cloud');
   if (!fig || !canvas || !canvas.getContext) return;
   var ctx = canvas.getContext('2d');
   var callout = fig.querySelector('.callout');
-  var btn = fig.querySelector('[data-loop-toggle]');
   var reduce = matchMedia('(prefers-reduced-motion: reduce)');
   var BINS = 7, SWEEP_MS = 7000, TURN_MS = 70000, RELIEF = 0.07;
   var pts = null, found = null, anchor = 0, colours = null;
   var W = 0, H = 0, dpr = 1, t0 = performance.now(), elapsed = 0, last = 0, raf = 0;
-  var s = { seen: false, hover: false, focus: false, held: reduce.matches };
 
   function readColours() {
     var probe = document.createElement('span');
@@ -106,10 +105,9 @@
   }
 
   function sync() {
-    var run = s.seen && !s.hover && !s.focus && !s.held;
+    var run = (!reel || reel.classList.contains('is-running')) && fig.classList.contains('is-active');
     if (run && !raf) { last = performance.now(); raf = requestAnimationFrame(frame); }
     if (!run && raf) { cancelAnimationFrame(raf); raf = 0; }
-    if (btn) btn.textContent = s.held ? 'Play' : 'Pause';
   }
 
   Promise.resolve(window.SMEAR)
@@ -119,14 +117,12 @@
       elapsed = SWEEP_MS * 0.5; // the still frame shows the sweep mid-scene
       resize();
       new ResizeObserver(resize).observe(canvas);
-      new IntersectionObserver(function (e) { s.seen = e[0].isIntersecting; sync(); }).observe(fig);
+      var mo = new MutationObserver(sync);
+      mo.observe(fig, { attributes: true, attributeFilter: ['class'] });
+      if (reel) mo.observe(reel, { attributes: true, attributeFilter: ['class'] });
+      sync();
       new MutationObserver(function () { readColours(); draw(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
     })
     .catch(function () { /* no data: the caption still says what belongs here */ });
 
-  if (btn) btn.addEventListener('click', function () { s.held = !s.held; sync(); });
-  [['pointerenter', 'hover', true], ['pointerleave', 'hover', false], ['focusin', 'focus', true], ['focusout', 'focus', false]].forEach(function (a) {
-    fig.addEventListener(a[0], function () { s[a[1]] = a[2]; sync(); });
-  });
-  reduce.addEventListener('change', function (e) { s.held = e.matches; sync(); });
 })();

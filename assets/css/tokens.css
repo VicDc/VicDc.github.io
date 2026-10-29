@@ -15,7 +15,7 @@
   /* PwC orange: the one signal (primary action, the found point) */
   --color-accent: oklch(66.9% 0.218 37.6); --color-accent-hi: oklch(72% 0.2 40); --color-accent-ink: oklch(18% 0.04 38); --color-focus: oklch(72% 0.2 40);
   /* OPIT purple: the seal (frames, links, the points) */
-  --color-seal: oklch(53.8% 0.234 285.4); --color-seal-text: oklch(76% 0.13 287);
+  --color-seal: oklch(53.8% 0.234 285.4); --color-seal-deep: oklch(44% 0.2 285); --color-seal-ink: oklch(97% 0.01 285); --color-seal-text: oklch(76% 0.13 287);
   --point-lo: oklch(36% 0.12 285); --point-mid: oklch(62% 0.13 287); --point-hi: oklch(95% 0.03 290);
   --color-slot: oklch(21% 0.018 282);
   --font-display: "Geologica", ui-sans-serif, system-ui, sans-serif; --font-body: "Geologica", ui-sans-serif, system-ui, sans-serif;

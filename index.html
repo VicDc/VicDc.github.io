@@ -55,14 +55,47 @@
         <div><dt>Applied Data Science and AI</dt><dd><b>MSc</b></dd></div>
       </dl>
     </div>
-    <figure class="cloud" data-loop>
-      <canvas id="cloud" role="img" aria-label="A blood smear from Malaria AI Scope drawn as 23,232 points, the 30 parasites found by YOLOv11 segmentation marked in orange"></canvas>
-      <div class="callout" aria-hidden="true">
-        <span class="leader"></span>
-        <span class="tag-box"><small>Parasites found</small><span class="num">30</span><small>P. falciparum, ring stage</small></span>
+    <figure class="reel" data-loop aria-label="Five projects at work">
+      <div class="reel-stage">
+        <div class="scene cloud is-active" id="scene-malaria" role="tabpanel" aria-labelledby="tab-malaria">
+          <canvas id="cloud" role="img" aria-label="A blood smear from Malaria AI Scope drawn as 23,232 points, the 30 parasites found by YOLOv11 segmentation marked in orange"></canvas>
+          <div class="callout" aria-hidden="true">
+            <span class="leader"></span>
+            <span class="tag-box"><small>Parasites found</small><span class="num">30</span><small>P. falciparum, ring stage</small></span>
+          </div>
+          <p class="scene-cap">A blood smear from Malaria AI Scope, 23,232 points. YOLOv11 instance segmentation marks each parasite it found in orange.</p>
+        </div>
+        <div class="scene" id="scene-hookus" role="tabpanel" aria-labelledby="tab-hookus">
+          <div class="window ticks"><div class="scroll"><img src="assets/img/hookus-pocus/telegram-guardrails.jpg" alt="hookus-pocus Telegram bot: close blocked for a viewer, delete blocked for the chat role, an injected instruction to delete hp#1 refused" width="540" height="810" loading="lazy"></div></div>
+          <p class="scene-cap">hookus-pocus on Telegram: a viewer cannot close, the chat role cannot delete, and “ignore previous instructions” is refused.</p>
+        </div>
+        <div class="scene" id="scene-bp" role="tabpanel" aria-labelledby="tab-bp">
+          <div class="window doc ticks"><div class="scroll"><img src="assets/img/business-plan/report-scroll.jpg" alt="Business Plan AI draft report, iteration 3, for a two-room guesthouse: vision, risks, market sizing" width="720" height="3111" loading="lazy"></div><span class="readbar" aria-hidden="true"><span></span></span></div>
+          <p class="scene-cap">A real Business Plan AI draft (iteration 3) for a two-room guesthouse, flagged risks and market sizing included.</p>
+        </div>
+        <div class="scene" id="scene-wa" role="tabpanel" aria-labelledby="tab-wa">
+          <div class="window pan"><img src="assets/img/whatsapp/agent.png" alt="WhatsApp Agent: anti-ban pacing settings and a contact list with sent, check-name, not-found and in-progress states" width="1300" height="850" loading="lazy"></div>
+          <p class="scene-cap">WhatsApp Toolkit mid-campaign: a name that matches under the 0.6 threshold waits for a human before sending.</p>
+        </div>
+        <div class="scene" id="scene-sherpa" role="tabpanel" aria-labelledby="tab-sherpa">
+          <div class="window chat ticks" aria-label="Sherpa chat flow from its user guide">
+            <p class="msg bot">Who are you?</p>
+            <p class="msg chips"><span>Person diagnosed</span><span class="on">Family member or caregiver</span><span>Healthcare professional</span></p>
+            <p class="msg me">How do I handle nighttime confusion?</p>
+            <p class="msg bot">thinking…</p>
+            <p class="msg gate">Only sources scoring 0.55 or more can be cited.</p>
+          </div>
+          <p class="scene-cap">Sherpa Alzheimer, the flow from its user guide: pick a role, ask, and the answer may cite only sources that clear the 0.55 gate.</p>
+        </div>
       </div>
-      <figcaption>
-        <span>A blood smear from Malaria AI Scope, 23,232 points. YOLOv11 instance segmentation marks each parasite it found in orange.</span>
+      <figcaption class="reel-bar">
+        <div class="reel-tabs" role="tablist" aria-label="Project">
+          <button type="button" role="tab" id="tab-malaria" aria-controls="scene-malaria" aria-selected="true">Malaria</button>
+          <button type="button" role="tab" id="tab-hookus" aria-controls="scene-hookus" aria-selected="false" tabindex="-1">hookus-pocus</button>
+          <button type="button" role="tab" id="tab-bp" aria-controls="scene-bp" aria-selected="false" tabindex="-1">Business Plan</button>
+          <button type="button" role="tab" id="tab-wa" aria-controls="scene-wa" aria-selected="false" tabindex="-1">WhatsApp</button>
+          <button type="button" role="tab" id="tab-sherpa" aria-controls="scene-sherpa" aria-selected="false" tabindex="-1">Sherpa</button>
+        </div>
         <button class="btn loop-toggle" type="button" data-loop-toggle>Pause</button>
       </figcaption>
     </figure>
@@ -102,7 +135,7 @@
       </article>
 
       <article class="proj">
-        <div class="proj-figure ticks"><span class="num">0.55</span><small>Retrieval score a source must clear before it can be cited</small></div>
+        <figure class="proj-media"><img src="assets/img/thumbs/sherpa.jpg" alt="Sherpa Alzheimer architecture: RAG agent, speech agent, supervisor agent, local vector DB and persona adaptor" loading="lazy" width="960" height="540"></figure>
         <div class="proj-top">
           <h3><a href="https://github.com/VicDc/Alzheimer-assistant">Sherpa Alzheimer</a></h3>
           <span class="award"><b>2nd place</b>, OPIT Hackathon 2026</span>
@@ -260,5 +293,6 @@
 <script src="assets/js/site.js"></script>
 <script src="assets/data/malaria-smear.js"></script>
 <script src="assets/js/cloud.js"></script>
+<script src="assets/js/reel.js"></script>
 </body>
 </html>
