@@ -56,13 +56,13 @@
       </dl>
     </div>
     <figure class="cloud" data-loop>
-      <canvas id="cloud" role="img" aria-label="Elevation of a 3 by 4 kilometre tile near Palermo drawn as 14,256 points, the highest point marked in orange"></canvas>
+      <canvas id="cloud" role="img" aria-label="A blood smear from Malaria AI Scope drawn as 23,232 points, the 30 parasites found by YOLOv11 segmentation marked in orange"></canvas>
       <div class="callout" aria-hidden="true">
         <span class="leader"></span>
-        <span class="tag-box"><small>Highest point</small><span class="num">810<span class="u">&#8239;m</span></span></span>
+        <span class="tag-box"><small>Parasites found</small><span class="num">30</span><small>P. falciparum, ring stage</small></span>
       </div>
       <figcaption>
-        <span>Copernicus GLO-30 elevation near Palermo, 14,256 measured points. The test tile behind Watershed-AI.</span>
+        <span>A blood smear from Malaria AI Scope, 23,232 points. YOLOv11 instance segmentation marks each parasite it found in orange.</span>
         <button class="btn loop-toggle" type="button" data-loop-toggle>Pause</button>
       </figcaption>
     </figure>
@@ -80,7 +80,7 @@
 
     <div class="stack-list">
       <article class="proj">
-        <figure class="proj-media"><img src="assets/img/thumbs/hookus-pocus.jpg" alt="Spec written by the hookus-pocus agent as a comment on a Forgejo issue" loading="lazy" width="800" height="450"></figure>
+        <figure class="proj-media"><img src="assets/img/thumbs/hookus-pocus.jpg" alt="hookus-pocus Telegram bot blocking a close and a delete by role, and refusing an injected instruction" loading="lazy" width="960" height="540"></figure>
         <div class="proj-top">
           <h3><a href="https://vicdc.github.io/hp-site-preview/">hookus-pocus</a></h3>
           <span class="award"><b>MSc thesis</b>, OPIT</span>
@@ -91,7 +91,7 @@
       </article>
 
       <article class="proj">
-        <figure class="proj-media"><img src="assets/img/thumbs/malaria.jpg" alt="Malaria AI Scope desktop GUI with segmented parasites on a blood smear" loading="lazy" width="800" height="450"></figure>
+        <figure class="proj-media"><img src="assets/img/thumbs/malaria.jpg" alt="Blood smear with each malaria parasite segmented by YOLOv11 in red" loading="lazy" width="960" height="540"></figure>
         <div class="proj-top">
           <h3><a href="malaria/">Malaria AI Scope</a></h3>
           <span class="award"><b>1st place</b>, AWS University Engagement Program</span>
@@ -151,7 +151,7 @@
           <h3><a href="watershed/">Watershed-AI</a></h3>
           <span class="award res">Side project</span>
         </div>
-        <p>Deterministic terrain-analysis pipeline that turns a DEM into the best flood-injection point, ranked by simulated flooded area. Prominence-based candidate detection, priority-flood depression filling and a cellular-automata simulation, all <strong>NumPy/SciPy raster computation</strong> with 3D visualizations over satellite imagery. The point cloud at the top of this page is its test tile.</p>
+        <p>Deterministic terrain-analysis pipeline that turns a DEM into the best flood-injection point, ranked by simulated flooded area. Prominence-based candidate detection, priority-flood depression filling and a cellular-automata simulation, all <strong>NumPy/SciPy raster computation</strong> with 3D visualizations over satellite imagery.</p>
         <div class="tags"><span class="tag hl">NumPy</span><span class="tag">SciPy</span><span class="tag">Plotly</span><span class="tag">GIS</span></div>
         <div class="repo"><a href="watershed/">Read the case study</a><a href="https://github.com/VicDc/Watershed-AI">View the repo</a></div>
       </article>
@@ -254,12 +254,11 @@
       <a class="btn" href="https://www.linkedin.com/in/viciodicara/">LinkedIn</a>
     </div>
     <p class="tiny">Remember this: Try. There are 10 types of people in the world: those who understand binary and those who don’t.</p>
-    <p class="tiny credits">Elevation data: Copernicus GLO-30 DEM, © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018, provided under COPERNICUS by the European Union and ESA.</p>
   </div>
 </footer>
 
 <script src="assets/js/site.js"></script>
-<script src="assets/data/dem-palermo.js"></script>
+<script src="assets/data/malaria-smear.js"></script>
 <script src="assets/js/cloud.js"></script>
 </body>
 </html>

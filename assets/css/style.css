@@ -1,9 +1,9 @@
 /* Hallmark · shape: Feature Stack (draw 0eacaa) · genre: modern-minimal · theme: Vantage (by request) · redesign: full · job: hire
- * hero: Stage (swap from the draw's Index: the user picked Vantage for its scan hero) · nav: three-part bar, six real destinations · footer: statement · imagery: the product, screenshots of the user's projects; a real DEM drawn as points · signature: the Copernicus DEM near Palermo from Watershed-AI as a turning point cloud, the peak found in orange · vantage: terrain/steel, ground and points retinted to OPIT purple, the lime signal replaced by PwC orange
+ * hero: Stage (swap from the draw's Index: the user picked Vantage for its scan hero) · nav: three-part bar, six real destinations · footer: statement · imagery: the product, screenshots of the user's projects; the model's own output drawn as points · signature: a real blood smear from Malaria AI Scope as a turning point cloud, the 30 parasites YOLOv11 found lit in orange · vantage: object/steel, ground and points retinted to OPIT purple, the lime signal replaced by PwC orange
  * axes: dark/grotesk-sans/chromatic-orange · posture: full palette (paper field, orange signal, purple seal) · contrast: pass · fold: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P4 H4 E4 S5 R4 V4 · weakest: P, a portfolio argues by its work; led with measured numbers and one real terrain scan instead of claims */
 /* Hallmark · dropped roots placeholders on the home page (dammuso-topography.png, ring-house-study.png) · both files are generated placeholder cards that print "Replace with", they stay on /roots until the real renders arrive */
-/* Hallmark · waive 44c · Stage visual, figure box includes its caption · the Palermo point cloud centres on the head; only the caption under it pulls the box centre down */
+/* Hallmark · waive 44c · Stage visual, figure box includes its caption · the smear point cloud centres on the head; only the caption under it pulls the box centre down */
 @import url("./tokens.css");
 @import url("./base.css");
 
@@ -81,6 +81,7 @@ nav[aria-label="Main"] > .wrap { display: flex; align-items: center; justify-con
 .callout .leader::after { content: ""; position: absolute; left: -1px; bottom: -2px; width: 3px; height: 3px; border-radius: 50%; background: var(--color-accent); }
 .callout .tag-box { position: absolute; left: var(--space-xs); bottom: 72px; padding: var(--space-xs) var(--space-sm); background: var(--color-paper); white-space: nowrap; }
 .callout .tag-box small { display: block; font-size: var(--text-xs); color: var(--color-muted); }
+.callout.flip .tag-box { left: auto; right: var(--space-xs); }
 .callout .tag-box .num { font-size: var(--text-lg); font-weight: 400; color: var(--color-ink); }
 .u { font-size: 0.75em; color: var(--color-muted); }
 .cloud figcaption { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; align-items: end; gap: var(--space-md); font-size: var(--text-xs); color: var(--color-muted); }
