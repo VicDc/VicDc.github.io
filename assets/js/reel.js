@@ -32,6 +32,7 @@
   function sync() {
     var run = s.seen && !s.hover && !s.focus && !s.held;
     reel.classList.toggle('is-running', run);
+    reel.classList.toggle('is-held', s.held);
     if (run && !raf) { last = performance.now(); raf = requestAnimationFrame(tick); }
     if (!run && raf) { cancelAnimationFrame(raf); raf = 0; }
     if (btn) btn.textContent = s.held ? 'Play' : 'Pause';
