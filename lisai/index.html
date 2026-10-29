@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LisAI Interpreter · Vicio Di Cara</title>
+<title>LisAI Interpreter, Vicio Di Cara</title>
 <meta name="description" content="Real-time Italian Sign Language recognition: MediaPipe Holistic, 543 keypoints, 87.3% fingerspelling accuracy at 30+ FPS. Case study.">
-<meta name="theme-color" content="#6A46EC">
+<meta name="theme-color" content="#14121f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght,CRSV,SHRP@200..500,0,0..100&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/style.css">
-<script>!(function(){var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")})()</script>
+<script>document.documentElement.classList.add('js');!(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}})()</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -26,8 +26,8 @@
         <li><a href="../#contact">Contact</a></li>
       </ul>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
-        <span class="icon-sun" aria-hidden="true">☀️</span>
-        <span class="icon-moon" aria-hidden="true">🌙</span>
+        <svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
       </button>
     </div>
   </div>
@@ -35,11 +35,11 @@
 
 <header class="case-hero">
   <div class="wrap">
-    <a class="crumb" href="../">← All projects</a>
+    <a class="crumb" href="../">All projects</a>
     <h1>LisAI Interpreter</h1>
     <p class="lede">Real-time recognition of Italian Sign Language (LIS), from webcam frames to Italian text. Built on a custom dataset, because for LIS, unlike ASL, large public corpora barely exist.</p>
     <div class="case-meta">
-      <span class="tag hl">Computer vision · deep learning research</span>
+      <span class="tag hl">Computer vision, deep learning research</span>
       <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">MediaPipe</span><span class="tag">OpenCV</span><span class="tag">FFmpeg</span>
     </div>
     <div class="hero-links">
@@ -57,10 +57,10 @@
   <div class="wrap">
     <div class="sec-head"><h2 id="overview-h">Overview</h2></div>
     <div class="stats">
-      <div class="stat"><div class="n">87.3%</div><div class="l">static fingerspelling accuracy · 26 classes</div></div>
-      <div class="stat"><div class="n">30+</div><div class="l">FPS real-time inference</div></div>
-      <div class="stat"><div class="n">543</div><div class="l">keypoints per frame · face, pose, hands</div></div>
-      <div class="stat"><div class="n">2</div><div class="l">tiers · static letters + dynamic words (research)</div></div>
+      <div class="stat ticks"><div class="n">87.3%</div><div class="l">static fingerspelling accuracy, 26 classes</div></div>
+      <div class="stat ticks"><div class="n">30+</div><div class="l">FPS real-time inference</div></div>
+      <div class="stat ticks"><div class="n">543</div><div class="l">keypoints per frame, face, pose, hands</div></div>
+      <div class="stat ticks"><div class="n">2</div><div class="l">tiers, static letters + dynamic words (research)</div></div>
     </div>
     <div class="prose">
       <p>LIS is a full language with its own grammar, not signed Italian. This project tackles the perception layer: a webcam stream goes through <strong>MediaPipe Holistic</strong>, which extracts 543 landmarks per frame (468 face mesh, 33 pose, 42 hand points), normalized relative to the shoulder midpoint so the model is invariant to distance and framing.</p>
@@ -118,8 +118,8 @@
 <footer>
   <div class="wrap">
     <div class="casenav">
-      <a class="btn" href="../malaria/">← Prev: Malaria AI Scope</a>
-      <a class="btn" href="../business-plan/">Next: Business Plan AI →</a>
+      <a class="btn" href="../malaria/">Previous: Malaria AI Scope</a>
+      <a class="btn" href="../business-plan/">Next: Business Plan AI</a>
     </div>
   </div>
 </footer>

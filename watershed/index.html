@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Watershed-AI · Vicio Di Cara</title>
+<title>Watershed-AI, Vicio Di Cara</title>
 <meta name="description" content="Deterministic terrain-analysis pipeline: from a DEM to the best flood-injection point, ranked by cellular-automata simulation. Case study.">
-<meta name="theme-color" content="#6A46EC">
+<meta name="theme-color" content="#14121f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght,CRSV,SHRP@200..500,0,0..100&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/style.css">
-<script>!(function(){var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")})()</script>
+<script>document.documentElement.classList.add('js');!(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}})()</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -25,8 +25,8 @@
         <li><a href="../#contact">Contact</a></li>
       </ul>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
-        <span class="icon-sun" aria-hidden="true">☀️</span>
-        <span class="icon-moon" aria-hidden="true">🌙</span>
+        <svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
       </button>
     </div>
   </div>
@@ -34,7 +34,7 @@
 
 <header class="case-hero">
   <div class="wrap">
-    <a class="crumb" href="../">← All projects</a>
+    <a class="crumb" href="../">All projects</a>
     <h1>Watershed-AI</h1>
     <p class="lede">A terrain-analysis pipeline that takes a digital elevation model and finds the best point to inject water for a flood scenario: not the highest point, but the one that floods the largest area. Inspired by the problem Real Ice tackles in the Arctic, where to pump seawater onto ice to thicken it.</p>
     <div class="case-meta">
@@ -85,8 +85,8 @@
 <footer>
   <div class="wrap">
     <div class="casenav">
-      <a class="btn" href="../business-plan/">← Prev: Business Plan AI</a>
-      <a class="btn" href="../">All projects →</a>
+      <a class="btn" href="../business-plan/">Previous: Business Plan AI</a>
+      <a class="btn" href="../">All projects</a>
     </div>
   </div>
 </footer>

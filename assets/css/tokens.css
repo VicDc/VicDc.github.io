@@ -1,0 +1,35 @@
+:root {
+  color-scheme: dark;
+  --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px; --space-4xl: 144px;
+  --text-xs: 0.8125rem; --text-sm: 0.875rem; --text-md: 1rem; --text-lg: 1.25rem; --text-xl: 1.5625rem; --text-2xl: 1.953rem; --text-3xl: 2.441rem;
+  --text-display-s: clamp(2.25rem, 4vw + 0.5rem, 3.75rem); --text-display: clamp(2.75rem, 5vw + 1rem, 5.25rem);
+  --text-section: clamp(2rem, 2.5vw + 1rem, 3.5rem); --text-title: clamp(1.25rem, 0.75vw + 0.875rem, 1.625rem); --text-lead: clamp(1.125rem, 0.35vw + 1rem, 1.375rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-in: cubic-bezier(0.7, 0, 0.84, 0); --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+  --color-error: oklch(72% 0.15 27); --color-success: oklch(76% 0.13 150);
+  --container: 1440px; --gutter: 64px; --gap-columns: 32px; --section-gap-s: 120px; --section-gap: 144px; --section-gap-l: 176px;
+  --z-base: 1; --z-raised: 10; --z-dropdown: 100; --z-sticky: 200; --z-sticky-nav: 300; --z-modal: 400; --z-toast: 500; --z-tooltip: 600;
+  --color-paper: oklch(13.5% 0.014 282); --color-paper-2: oklch(17% 0.016 282); --color-paper-3: oklch(21% 0.018 282);
+  --color-ink: oklch(95% 0.006 285); --color-ink-2: oklch(83% 0.014 285); --color-muted: oklch(68% 0.018 285);
+  --color-rule: oklch(27% 0.016 282); --color-rule-2: oklch(36% 0.02 282);
+  /* PwC orange: the one signal (primary action, the found point) */
+  --color-accent: oklch(66.9% 0.218 37.6); --color-accent-hi: oklch(72% 0.2 40); --color-accent-ink: oklch(18% 0.04 38); --color-focus: oklch(72% 0.2 40);
+  /* OPIT purple: the seal (frames, links, the points) */
+  --color-seal: oklch(53.8% 0.234 285.4); --color-seal-text: oklch(76% 0.13 287);
+  --point-lo: oklch(36% 0.12 285); --point-mid: oklch(62% 0.13 287); --point-hi: oklch(95% 0.03 290);
+  --color-slot: oklch(21% 0.018 282);
+  --font-display: "Geologica", ui-sans-serif, system-ui, sans-serif; --font-body: "Geologica", ui-sans-serif, system-ui, sans-serif;
+  --radius-card: 4px; --radius-pill: 999px; --rule-hair: 1px; --tick: 10px;
+  --shadow-card: none;
+  --tracking-display: -0.035em; --display-weight: 300;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --color-paper: oklch(97.5% 0.006 285); --color-paper-2: oklch(94.5% 0.01 285); --color-paper-3: oklch(91% 0.014 285);
+  --color-ink: oklch(19% 0.03 285); --color-ink-2: oklch(32% 0.03 285); --color-muted: oklch(47% 0.03 285);
+  --color-rule: oklch(88% 0.012 285); --color-rule-2: oklch(78% 0.02 285);
+  --color-accent: oklch(52% 0.17 40); --color-accent-hi: oklch(47% 0.16 40); --color-accent-ink: oklch(98.5% 0.008 40); --color-focus: oklch(53% 0.17 40);
+  --color-seal-text: oklch(48% 0.22 285);
+  --point-lo: oklch(78% 0.06 287); --point-mid: oklch(58% 0.15 286); --point-hi: oklch(30% 0.12 285);
+  --color-slot: oklch(91% 0.014 285);
+}

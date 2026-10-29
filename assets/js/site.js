@@ -50,9 +50,10 @@
 /* ---------- 3. theme switcher ---------- */
 (function () {
   function getPreferredTheme() {
-    var saved = localStorage.getItem('theme');
-    if (saved === 'dark' || saved === 'light') return saved;
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    // dark first (the Vantage ground); light only when the visitor picked it
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch (e) {}
+    return saved === 'light' ? 'light' : 'dark';
   }
 
   function applyTheme(theme) {
@@ -68,15 +69,6 @@
   var currentTheme = getPreferredTheme();
   applyTheme(currentTheme);
 
-  // Listen for system theme changes if no manual preference stored
-  if (window.matchMedia) {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-      if (!localStorage.getItem('theme')) {
-        applyTheme(e.matches ? 'dark' : 'light');
-      }
-    });
-  }
-
   // Bind toggle click listener
   function initToggle() {
     var btn = document.getElementById('theme-toggle');
@@ -84,7 +76,7 @@
       btn.addEventListener('click', function () {
         var active = document.documentElement.getAttribute('data-theme') || getPreferredTheme();
         var next = active === 'dark' ? 'light' : 'dark';
-        localStorage.setItem('theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
         applyTheme(next);
       });
     }

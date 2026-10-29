@@ -1,0 +1,31 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "site",
+  "shape": "Feature Stack",
+  "theme": "vantage",
+  "axes": "dark/grotesk-sans/chromatic-orange",
+  "hero": "Stage",
+  "nav": "three-part bar",
+  "footer": "statement",
+  "imagery": "the product, screenshots; real DEM point cloud",
+  "photos": [],
+  "entry": "index.html",
+  "sections": [
+   "hero",
+   "feature-stack projects",
+   "statement+grid principles",
+   "ledger table stack",
+   "rows experience",
+   "split roots",
+   "statement footer"
+  ],
+  "signature": "Copernicus DEM near Palermo as a turning point cloud, peak in orange",
+  "waived": [
+   "44c"
+  ],
+  "prompt": "AI engineer portfolio, hire",
+  "date": "2026-10-29"
+ }
+]

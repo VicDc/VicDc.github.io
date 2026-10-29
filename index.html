@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vicio Di Cara · AI Engineer</title>
-<meta name="description" content="AI Engineer in Palermo. Computer vision, multi-agent RAG and fine-tuned LLM systems, grounded in 4 years of B2B industrial consulting.">
-<meta name="theme-color" content="#6A46EC">
-<meta property="og:title" content="Vicio Di Cara · AI Engineer">
+<title>Vicio Di Cara, AI Engineer</title>
+<meta name="description" content="AI Engineer in Palermo. Computer vision, multi-agent RAG and guarded LLM agents, grounded in 4 years of B2B industrial consulting.">
+<meta name="theme-color" content="#14121f">
+<meta property="og:title" content="Vicio Di Cara, AI Engineer">
 <meta property="og:description" content="Computer vision, multi-agent RAG and guarded LLM agents, grounded in B2B industrial consulting.">
 <meta property="og:image" content="https://vicdc.github.io/assets/img/thumbs/hookus-pocus.jpg">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght,CRSV,SHRP@200..500,0,0..100&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
-<script>!(function(){var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")})()</script>
+<script>document.documentElement.classList.add('js');!(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}})()</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -32,8 +32,8 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
-        <span class="icon-sun" aria-hidden="true">☀️</span>
-        <span class="icon-moon" aria-hidden="true">🌙</span>
+        <svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
       </button>
     </div>
   </div>
@@ -41,132 +41,133 @@
 
 <header class="hero" id="top">
   <div class="wrap">
-    <p class="kicker"><strong>Vicio Di Cara</strong> · AI Engineer · Palermo, Italy</p>
-    <h1 class="hero-name">I build AI systems end-to-end, and I make sure <em>the numbers hold</em>.</h1>
-    <p class="hero-sub">Computer vision, multi-agent RAG and fine-tuned LLMs, grounded in 4 years of B2B technical consulting across 90+ Italian manufacturing SMBs. I care about systems that ship and stakeholders who are not engineers.</p>
-    <div class="hero-links">
-      <a class="btn primary" href="#projects">See the work</a>
-      <a class="btn" href="https://github.com/VicDc">GitHub</a>
-      <a class="btn" href="https://www.linkedin.com/in/viciodicara/">LinkedIn</a>
+    <div>
+      <h1>AI systems where the numbers hold.</h1>
+      <p class="lead">Vicio Di Cara, AI Engineer in Palermo: computer vision, multi-agent RAG and guarded LLM agents.</p>
+      <div class="hero-links">
+        <a class="btn primary" href="#projects">See the work</a>
+        <a class="btn" href="https://github.com/VicDc">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/viciodicara/">LinkedIn</a>
+      </div>
+      <dl class="proof ticks">
+        <div><dt>AWS University Engagement</dt><dd><b>1st place</b></dd></div>
+        <div><dt>OPIT Hackathon 2026</dt><dd><b>2nd place</b></dd></div>
+        <div><dt>Applied Data Science and AI</dt><dd><b>MSc</b></dd></div>
+      </dl>
     </div>
-    <p class="proof">
-      <span>🥇 <strong>1st place</strong> · AWS University Engagement Program</span>
-      <span>🥈 <strong>2nd place</strong> · OPIT Hackathon 2026</span>
-      <span><strong>MSc</strong> Applied Data Science &amp; AI · OPIT</span>
-    </p>
+    <figure class="cloud" data-loop>
+      <canvas id="cloud" role="img" aria-label="Elevation of a 3 by 4 kilometre tile near Palermo drawn as 14,256 points, the highest point marked in orange"></canvas>
+      <div class="callout" aria-hidden="true">
+        <span class="leader"></span>
+        <span class="tag-box"><small>Highest point</small><span class="num">810<span class="u">&#8239;m</span></span></span>
+      </div>
+      <figcaption>
+        <span>Copernicus GLO-30 elevation near Palermo, 14,256 measured points. The test tile behind Watershed-AI.</span>
+        <button class="btn loop-toggle" type="button" data-loop-toggle>Pause</button>
+      </figcaption>
+    </figure>
   </div>
 </header>
-
-<div class="wave" aria-hidden="true">~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~</div>
 
 <main id="main">
 
 <section id="projects" aria-labelledby="projects-h">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 id="projects-h">Projects</h2>
-      <p>Seven systems, each with a case study, a project page or a repo. Every number below is measured, not estimated.</p>
+  <div class="wrap stack-grid">
+    <div class="stack-pane">
+      <h2 id="projects-h">Seven systems, measured.</h2>
+      <p class="lead">Each one has a case study, a project page or a repo. Every number is measured, not estimated.</p>
     </div>
 
-    <article class="proj has-thumb">
-      <img class="proj-thumb" src="assets/img/thumbs/hookus-pocus.jpg" alt="Spec written by the hookus-pocus agent as a comment on a Forgejo issue" loading="lazy">
-      <div>
-      <div class="proj-top">
-        <h3><a href="https://vicdc.github.io/hp-site-preview/">hookus-pocus</a></h3>
-        <span class="award">MSc thesis · OPIT</span>
-      </div>
-      <p>A small multi-agent team for project management (triage, specs, review, status reports) where <strong>the model writes and plain code decides</strong>. Every ticket change passes one action gate with per-role permissions, deterministic Python hooks, human confirmation for high-impact actions, and ticket text kept apart from instructions. Each guardrail can be switched off, so a benchmark measures what it is worth: forbidden actions blocked rise from <span class="metric">0.35–0.42 to 1.00</span> and end-to-end prompt injection success drops to <span class="metric">0.00</span> across three models (pilot runs). Works on Forgejo, Notion and Linear, from the terminal or a Telegram bot.</p>
-      <div class="tags"><span class="tag hl">Multi-Agent</span><span class="tag hl">Agent guardrails</span><span class="tag">Python</span><span class="tag">Pydantic</span><span class="tag">OpenRouter</span><span class="tag">LM Studio</span><span class="tag">SQLite</span><span class="tag">Telegram</span><span class="tag">Notion API</span><span class="tag">Linear GraphQL</span><span class="tag">Forgejo</span><span class="tag">Docker</span><span class="tag">pytest</span></div>
-      <div class="repo"><a href="https://vicdc.github.io/hp-site-preview/">Read the project page</a></div>
-      </div>
-    </article>
+    <div class="stack-list">
+      <article class="proj">
+        <figure class="proj-media"><img src="assets/img/thumbs/hookus-pocus.jpg" alt="Spec written by the hookus-pocus agent as a comment on a Forgejo issue" loading="lazy" width="800" height="450"></figure>
+        <div class="proj-top">
+          <h3><a href="https://vicdc.github.io/hp-site-preview/">hookus-pocus</a></h3>
+          <span class="award"><b>MSc thesis</b>, OPIT</span>
+        </div>
+        <p>A small multi-agent team for project management (triage, specs, review, status reports) where <strong>the model writes and plain code decides</strong>. Every ticket change passes one action gate with per-role permissions, deterministic Python hooks, human confirmation for high-impact actions, and ticket text kept apart from instructions. Each guardrail can be switched off, so a benchmark measures what it is worth: forbidden actions blocked rise to <span class="metric">1.00</span> from a baseline of 0.35 to 0.42, and end-to-end prompt injection success drops to <span class="metric">0.00</span> across three models (pilot runs).</p>
+        <div class="tags"><span class="tag hl">Multi-Agent</span><span class="tag hl">Agent guardrails</span><span class="tag">Python</span><span class="tag">Pydantic</span><span class="tag">OpenRouter</span><span class="tag">LM Studio</span><span class="tag">SQLite</span><span class="tag">Telegram</span><span class="tag">Notion API</span><span class="tag">Linear GraphQL</span><span class="tag">Forgejo</span><span class="tag">Docker</span><span class="tag">pytest</span></div>
+        <div class="repo"><a href="https://vicdc.github.io/hp-site-preview/">Read the project page</a></div>
+      </article>
 
-    <article class="proj has-thumb">
-      <img class="proj-thumb" src="assets/img/thumbs/malaria.jpg" alt="Malaria AI Scope desktop GUI with segmented parasites on a blood smear" loading="lazy">
-      <div>
-      <div class="proj-top">
-        <h3><a href="malaria/">Malaria AI Scope</a></h3>
-        <span class="award">🥇 1st place · AWS University Engagement Program</span>
-      </div>
-      <p>Automated malaria parasite detection with <strong>YOLOv11 instance segmentation</strong> across 17 classes (4 Plasmodium species × 4 life stages), reaching <span class="metric">62% mAP50</span> on the full heterogeneous test corpus. Unifies datasets in three annotation formats into one training pipeline with a real-time clinical inference GUI.</p>
-      <div class="tags"><span class="tag hl">Python</span><span class="tag">PyTorch</span><span class="tag">YOLOv11</span><span class="tag">OpenCV</span><span class="tag">Google Colab</span></div>
-      <div class="repo"><a href="malaria/">Read the case study</a><a href="https://github.com/VicDc/MalariaAI-Scope">View the repo</a></div>
+      <article class="proj">
+        <figure class="proj-media"><img src="assets/img/thumbs/malaria.jpg" alt="Malaria AI Scope desktop GUI with segmented parasites on a blood smear" loading="lazy" width="800" height="450"></figure>
+        <div class="proj-top">
+          <h3><a href="malaria/">Malaria AI Scope</a></h3>
+          <span class="award"><b>1st place</b>, AWS University Engagement Program</span>
+        </div>
+        <p>Automated malaria parasite detection with <strong>YOLOv11 instance segmentation</strong> across 17 classes (4 Plasmodium species, 4 life stages each), reaching <span class="metric">62% mAP50</span> on the full heterogeneous test corpus. Unifies datasets in three annotation formats into one training pipeline with a real-time clinical inference GUI.</p>
+        <div class="tags"><span class="tag hl">Python</span><span class="tag">PyTorch</span><span class="tag">YOLOv11</span><span class="tag">OpenCV</span><span class="tag">Google Colab</span></div>
+        <div class="repo"><a href="malaria/">Read the case study</a><a href="https://github.com/VicDc/MalariaAI-Scope">View the repo</a></div>
+      </article>
+
+      <article class="proj">
+        <div class="proj-figure ticks"><span class="num">0.55</span><small>Retrieval score a source must clear before it can be cited</small></div>
+        <div class="proj-top">
+          <h3><a href="https://github.com/VicDc/Alzheimer-assistant">Sherpa Alzheimer</a></h3>
+          <span class="award"><b>2nd place</b>, OPIT Hackathon 2026</span>
+        </div>
+        <p>Multi-agent <strong>RAG chatbot</strong> for Alzheimer’s care that adapts tone for patients, caregivers and doctors. FastAPI, Milvus, Redis, Next.js, delivered over web and Telegram. A <span class="metric">0.55 score-threshold</span> gate blocks fabricated citations, a SupervisorAgent validates every answer, and an embedding snapshot system cuts cold start from minutes to seconds. Phoenix/OpenTelemetry tracing, fully offline via Ollama.</p>
+        <div class="tags"><span class="tag hl">FastAPI</span><span class="tag">Milvus</span><span class="tag">Redis</span><span class="tag">Next.js</span><span class="tag">Docker</span><span class="tag">Ollama</span></div>
+        <div class="repo"><a href="https://github.com/VicDc/Alzheimer-assistant">View the repo</a></div>
+      </article>
+
+      <article class="proj">
+        <figure class="proj-media"><img src="assets/img/thumbs/business-plan.jpg" alt="Break-even waterfall chart rendered by Business Plan AI" loading="lazy" width="700" height="500"></figure>
+        <div class="proj-top">
+          <h3><a href="business-plan/">Business Plan AI</a></h3>
+          <span class="award res">Active development</span>
+        </div>
+        <p>Local, privacy-first multi-agent system that turns a raw business idea into a structured plan for Italian micro-businesses. Six specialist agents under a custom Orchestrator with 6 LLM-based consistency checks. The distinctive part: a <strong>pure-Python verification layer</strong> re-derives unit margin, break-even and capital totals at 5% tolerance with no model in the loop.</p>
+        <div class="tags"><span class="tag hl">Multi-Agent</span><span class="tag">Python</span><span class="tag">LM Studio</span><span class="tag">Plotly</span><span class="tag">XLSX</span></div>
+        <div class="repo"><a href="business-plan/">Read the case study</a><a href="https://github.com/VicDc/business-plan-ai">View the repo</a></div>
+      </article>
+
+      <article class="proj">
+        <figure class="proj-media"><img src="assets/img/thumbs/whatsapp.jpg" alt="WhatsApp Agent desktop app with contact list and colour-coded send status" loading="lazy" width="800" height="450"></figure>
+        <div class="proj-top">
+          <h3><a href="https://github.com/VicDc/WhatsApp_Toolkit-vd">WhatsApp Toolkit</a></h3>
+          <span class="award res">Proprietary product</span>
+        </div>
+        <p>Desktop app that turns a shop’s Excel customer list into a <strong>personalised WhatsApp campaign with a human in the loop</strong>. A converter cleans names and numbers, detects gender from the first name to inflect Italian text, and spreads up to 5 message variants across contacts. The agent drives WhatsApp Web one chat at a time with fuzzy recipient checks, manual or automatic mode, crash-safe resume that never sends twice, and human-like pacing with a daily cap. Runs on Windows and Raspberry Pi.</p>
+        <div class="tags"><span class="tag hl">Selenium</span><span class="tag hl">Automation</span><span class="tag">Python</span><span class="tag">Tkinter</span><span class="tag">pandas</span><span class="tag">openpyxl</span><span class="tag">Raspberry Pi</span></div>
+        <div class="repo"><a href="https://github.com/VicDc/WhatsApp_Toolkit-vd">View the repo</a></div>
+      </article>
+
+      <article class="proj">
+        <div class="proj-figure ticks"><span class="num">87.3<span class="u">&#8239;%</span></span><small>Fingerspelling accuracy at 30+ FPS, 26 classes</small></div>
+        <div class="proj-top">
+          <h3><a href="lisai/">LisAI Interpreter</a></h3>
+          <span class="award res">Computer vision research</span>
+        </div>
+        <p>Real-time <strong>Italian Sign Language recognition</strong>. MediaPipe Holistic extracts 543 keypoints per frame, and static fingerspelling reaches <span class="metric">87.3% accuracy at 30+ FPS</span> (MLP / 1D-CNN, 26 classes). Word-level recognition explored as a research track with Bi-LSTM and Transformer sequence models.</p>
+        <div class="tags"><span class="tag hl">MediaPipe</span><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Bi-LSTM</span><span class="tag">Transformer</span><span class="tag">FFmpeg</span></div>
+        <div class="repo"><a href="lisai/">Read the case study</a><a href="https://github.com/VicDc/LIS_Ai_Capstone">View the repo</a></div>
+      </article>
+
+      <article class="proj">
+        <figure class="proj-media"><img src="assets/img/thumbs/watershed.jpg" alt="Watershed-AI 3D terrain with satellite imagery" loading="lazy" width="800" height="500"></figure>
+        <div class="proj-top">
+          <h3><a href="watershed/">Watershed-AI</a></h3>
+          <span class="award res">Side project</span>
+        </div>
+        <p>Deterministic terrain-analysis pipeline that turns a DEM into the best flood-injection point, ranked by simulated flooded area. Prominence-based candidate detection, priority-flood depression filling and a cellular-automata simulation, all <strong>NumPy/SciPy raster computation</strong> with 3D visualizations over satellite imagery. The point cloud at the top of this page is its test tile.</p>
+        <div class="tags"><span class="tag hl">NumPy</span><span class="tag">SciPy</span><span class="tag">Plotly</span><span class="tag">GIS</span></div>
+        <div class="repo"><a href="watershed/">Read the case study</a><a href="https://github.com/VicDc/Watershed-AI">View the repo</a></div>
+      </article>
     </div>
-    </article>
-
-    <article class="proj">
-      <div class="proj-top">
-        <h3><a href="https://github.com/VicDc/Alzheimer-assistant">Sherpa Alzheimer</a></h3>
-        <span class="award">🥈 2nd place · OPIT Hackathon 2026</span>
-      </div>
-      <p>Multi-agent <strong>RAG chatbot</strong> for Alzheimer's care that adapts tone for patients, caregivers and doctors. FastAPI, Milvus, Redis, Next.js, delivered over web and Telegram. A <span class="metric">0.55 score-threshold</span> gate blocks fabricated citations, a SupervisorAgent validates every answer, and an embedding snapshot system cuts cold start from minutes to seconds. Phoenix/OpenTelemetry tracing, fully offline via Ollama.</p>
-      <div class="tags"><span class="tag hl">FastAPI</span><span class="tag">Milvus</span><span class="tag">Redis</span><span class="tag">Next.js</span><span class="tag">Docker</span><span class="tag">Ollama</span></div>
-      <div class="repo"><a href="https://github.com/VicDc/Alzheimer-assistant">View the repo</a></div>
-    </article>
-
-    <article class="proj has-thumb">
-      <img class="proj-thumb" src="assets/img/thumbs/business-plan.jpg" alt="Break-even waterfall chart rendered by Business Plan AI" loading="lazy">
-      <div>
-      <div class="proj-top">
-        <h3><a href="business-plan/">Business Plan AI</a></h3>
-        <span class="award res">Active development</span>
-      </div>
-      <p>Local, privacy-first multi-agent system that turns a raw business idea into a structured plan for Italian micro-businesses. Six specialist agents under a custom Orchestrator with 6 LLM-based consistency checks. The distinctive part: a <strong>pure-Python verification layer</strong> re-derives unit margin, break-even and capital totals at 5% tolerance with no model in the loop.</p>
-      <div class="tags"><span class="tag hl">Multi-Agent</span><span class="tag">Python</span><span class="tag">LM Studio</span><span class="tag">Plotly</span><span class="tag">XLSX</span></div>
-      <div class="repo"><a href="business-plan/">Read the case study</a><a href="https://github.com/VicDc/business-plan-ai">View the repo</a></div>
-    </div>
-    </article>
-
-    <article class="proj has-thumb">
-      <img class="proj-thumb" src="assets/img/thumbs/whatsapp.jpg" alt="WhatsApp Agent desktop app with contact list and colour-coded send status" loading="lazy">
-      <div>
-      <div class="proj-top">
-        <h3><a href="https://github.com/VicDc/WhatsApp_Toolkit-vd">WhatsApp Toolkit</a></h3>
-        <span class="award res">Product · proprietary</span>
-      </div>
-      <p>Desktop app that turns a shop's Excel customer list into a <strong>personalised WhatsApp campaign with a human in the loop</strong>. A converter cleans names and numbers, detects gender from the first name to inflect Italian text, and spreads up to 5 message variants across contacts. The agent drives WhatsApp Web one chat at a time with fuzzy recipient checks, manual or automatic mode, crash-safe resume that never sends twice, and human-like pacing with a daily cap. Runs on Windows and Raspberry Pi.</p>
-      <div class="tags"><span class="tag hl">Selenium</span><span class="tag hl">Automation</span><span class="tag">Python</span><span class="tag">Tkinter</span><span class="tag">pandas</span><span class="tag">openpyxl</span><span class="tag">Raspberry Pi</span></div>
-      <div class="repo"><a href="https://github.com/VicDc/WhatsApp_Toolkit-vd">View the repo</a></div>
-      </div>
-    </article>
-
-    <article class="proj">
-      <div class="proj-top">
-        <h3><a href="lisai/">LisAI Interpreter</a></h3>
-        <span class="award res">Computer vision · deep learning research</span>
-      </div>
-      <p>Real-time <strong>Italian Sign Language recognition</strong>. MediaPipe Holistic extracts 543 keypoints per frame, and static fingerspelling reaches <span class="metric">87.3% accuracy at 30+ FPS</span> (MLP / 1D-CNN, 26 classes). Word-level recognition explored as a research track with Bi-LSTM and Transformer sequence models.</p>
-      <div class="tags"><span class="tag hl">MediaPipe</span><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Bi-LSTM</span><span class="tag">Transformer</span><span class="tag">FFmpeg</span></div>
-      <div class="repo"><a href="lisai/">Read the case study</a><a href="https://github.com/VicDc/LIS_Ai_Capstone">View the repo</a></div>
-    </article>
-
-    <article class="proj has-thumb">
-      <img class="proj-thumb" src="assets/img/thumbs/watershed.jpg" alt="Watershed-AI 3D terrain with satellite imagery" loading="lazy">
-      <div>
-      <div class="proj-top">
-        <h3><a href="watershed/">Watershed-AI</a></h3>
-        <span class="award res">Side project</span>
-      </div>
-      <p>Deterministic terrain-analysis pipeline that turns a DEM into the best flood-injection point, ranked by simulated flooded area. Prominence-based candidate detection, priority-flood depression filling and a cellular-automata simulation, all <strong>NumPy/SciPy raster computation</strong> with 3D visualizations over satellite imagery.</p>
-      <div class="tags"><span class="tag hl">NumPy</span><span class="tag">SciPy</span><span class="tag">Plotly</span><span class="tag">GIS</span></div>
-      <div class="repo"><a href="watershed/">Read the case study</a><a href="https://github.com/VicDc/Watershed-AI">View the repo</a></div>
-    </div>
-    </article>
-
   </div>
 </section>
 
 <section id="principles" class="alt" aria-labelledby="principles-h">
   <div class="wrap">
-    <div class="sec-head">
-      <h2 id="principles-h">Principles</h2>
-    </div>
+    <h2 id="principles-h" class="visually-hidden">Principles</h2>
     <blockquote class="quotebox">Computable ground truth should be computed, not delegated to a model.</blockquote>
     <ul class="prin">
-      <li><strong>Deterministic where it matters.</strong> Financial figures in Business Plan AI are re-derived by pure Python, and charts are rendered by code from structured specs. The LLM proposes, arithmetic verifies. In hookus-pocus, plain-code hooks, not the model, decide which ticket actions are allowed.</li>
-      <li><strong>Honest failure over confident fiction.</strong> Sherpa falls back to conversation when no source clears the retrieval threshold. Non-convergent plans ship with a manual-review banner, not a fabricated result.</li>
+      <li><strong>Deterministic where it matters.</strong> Financial figures in Business Plan AI are re-derived by pure Python. In hookus-pocus, plain-code hooks, not the model, decide which ticket actions are allowed.</li>
       <li><strong>Guardrails you can measure.</strong> Every safety feature in hookus-pocus can be switched off, so a benchmark shows what each one is worth instead of assuming it.</li>
       <li><strong>Humans stay in the loop.</strong> High-impact agent actions wait for an explicit yes, and the WhatsApp Toolkit asks before sending when the recipient match is uncertain.</li>
+      <li><strong>Honest failure over confident fiction.</strong> Sherpa falls back to conversation when no source clears the retrieval threshold. Non-convergent plans ship with a manual-review banner.</li>
       <li><strong>Metrics on the hard corpus.</strong> 62% mAP50 is reported on the full heterogeneous test set, not a narrower favourable slice.</li>
       <li><strong>Local-first by default.</strong> Ollama and LM Studio inference, Milvus snapshots, on-device pipelines. Data stays where it belongs.</li>
     </ul>
@@ -176,42 +177,50 @@
 <section id="stack" aria-labelledby="stack-h">
   <div class="wrap">
     <div class="sec-head">
-      <h2 id="stack-h">Stack</h2>
+      <h2 id="stack-h">What I build with</h2>
     </div>
-    <div class="stackgrid">
-      <div class="stackcell"><h3>Languages</h3><p>Python · SQL · JavaScript</p></div>
-      <div class="stackcell"><h3>AI / ML</h3><p>PyTorch · TensorFlow · Scikit-learn · Ultralytics YOLO · MediaPipe · OpenCV</p></div>
-      <div class="stackcell"><h3>LLM &amp; agents</h3><p>RAG · custom multi-agent orchestration · CrewAI · Ollama · LM Studio · OpenRouter · QLoRA / Unsloth · prompt-injection defences</p></div>
-      <div class="stackcell"><h3>Backend &amp; data</h3><p>FastAPI · Pydantic · Milvus · Redis · SQLite · PostgreSQL · MySQL · SQL Server</p></div>
-      <div class="stackcell"><h3>DevOps</h3><p>Docker · Docker Compose · Git · pytest · REST &amp; GraphQL APIs · Microservices</p></div>
-      <div class="stackcell"><h3>Automation &amp; integrations</h3><p>Selenium · Telegram bots · Notion API · Linear GraphQL · Forgejo webhooks · Tkinter desktop apps · Raspberry Pi</p></div>
-      <div class="stackcell"><h3>Observability &amp; tools</h3><p>Phoenix / OpenTelemetry · TensorBoard · Plotly · Hugging Face · FFmpeg</p></div>
-    </div>
+    <table class="ledger">
+      <tbody>
+        <tr><th scope="row">Languages</th><td>Python, SQL, JavaScript</td></tr>
+        <tr><th scope="row">AI and ML</th><td>PyTorch, TensorFlow, Scikit-learn, Ultralytics YOLO, MediaPipe, OpenCV</td></tr>
+        <tr><th scope="row">LLM and agents</th><td>RAG, custom multi-agent orchestration, CrewAI, Ollama, LM Studio, OpenRouter, QLoRA / Unsloth, prompt-injection defences</td></tr>
+        <tr><th scope="row">Backend and data</th><td>FastAPI, Pydantic, Milvus, Redis, SQLite, PostgreSQL, MySQL, SQL Server</td></tr>
+        <tr><th scope="row">Automation and integrations</th><td>Selenium, Telegram bots, Notion API, Linear GraphQL, Forgejo webhooks, Tkinter desktop apps, Raspberry Pi</td></tr>
+        <tr><th scope="row">DevOps</th><td>Docker, Docker Compose, Git, pytest, REST and GraphQL APIs, microservices</td></tr>
+        <tr><th scope="row">Observability and tools</th><td>Phoenix / OpenTelemetry, TensorBoard, Plotly, Hugging Face, FFmpeg</td></tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
 <section id="experience" class="alt" aria-labelledby="experience-h">
   <div class="wrap">
     <div class="sec-head">
-      <h2 id="experience-h">Experience</h2>
+      <h2 id="experience-h">Where the work comes from</h2>
     </div>
     <div class="log">
       <div class="logentry">
-        <p class="logdate">2024 → today</p>
-        <h3>MSc in Applied Data Science &amp; AI</h3>
-        <p class="logrole">OPIT · Open Institute of Technology</p>
+        <div>
+          <p class="logdate">2024 to today</p>
+          <h3>MSc in Applied Data Science and AI</h3>
+          <p class="logrole">OPIT, Open Institute of Technology</p>
+        </div>
         <p>Building the AI portfolio above alongside the degree: two award-winning projects and a growing set of local-first agentic systems.</p>
       </div>
       <div class="logentry">
-        <p class="logdate">2021 → 2024</p>
-        <h3>Computes Group Srl</h3>
-        <p class="logrole">Software Specialist &amp; Sales Engineer</p>
+        <div>
+          <p class="logdate">2021 to 2024</p>
+          <h3>Computes Group Srl</h3>
+          <p class="logrole">Software Specialist and Sales Engineer</p>
+        </div>
         <p>Deployment, configuration and troubleshooting of enterprise CAD/CAM and ERP software (SQL Server) across <strong>90+ Italian manufacturing SMBs</strong> in the supply chain of Fincantieri, Trenitalia, Hitachi Rail and Saipem, with client work across Spain, Greece, Turkey, Poland and the Balkans. 56.7% conversion on technical upsell engagements and a 27.1% revenue boost through consultative work at EuroBlech, Lamiera and Mecspe.</p>
       </div>
       <div class="logentry">
-        <p class="logdate">2020 → 2021</p>
-        <h3>CMC Srl</h3>
-        <p class="logrole">Production Analyst &amp; Technical Drafter</p>
+        <div>
+          <p class="logdate">2020 to 2021</p>
+          <h3>CMC Srl</h3>
+          <p class="logrole">Production Analyst and Technical Drafter</p>
+        </div>
         <p>CAD/CAM design of rail and naval components shipped to Alstom, Fincantieri, Trenitalia and Hitachi Rail. NC part programs and CAM execution on Prima Industrie and Cy-laser cutting systems and Durma press brakes. The bridge between the drafting office and the production floor.</p>
       </div>
     </div>
@@ -219,27 +228,15 @@
 </section>
 
 <section id="roots" aria-labelledby="roots-h">
-  <div class="wrap">
-    <div class="sec-head">
+  <div class="wrap roots-split">
+    <figure>
+      <video src="assets/roots/photoscan-villa.mp4" poster="assets/roots/photoscan-villa-poster.jpg" autoplay muted loop playsinline aria-label="Photogrammetry scan of a villa, Agisoft PhotoScan, 2017"></video>
+      <figcaption>Photogrammetry scan of a villa, Agisoft PhotoScan, 2017</figcaption>
+    </figure>
+    <div>
       <h2 id="roots-h">Before AI: a decade in 3D</h2>
       <p>Before training neural networks I spent a decade making 3D data by hand: BIM models in Revit, photogrammetry scans, and NC programs for laser-cut steel. That background is why spatial data feels native in my AI work.</p>
-    </div>
-    <div class="gallery">
-      <figure class="shot">
-        <video src="assets/roots/photoscan-villa.mp4" poster="assets/roots/photoscan-villa-poster.jpg" autoplay muted loop playsinline aria-label="Photogrammetry scan of a villa, Agisoft PhotoScan, 2017"></video>
-        <figcaption>Photogrammetry scan of a villa, Agisoft PhotoScan, 2017</figcaption>
-      </figure>
-      <figure class="shot">
-        <img src="assets/roots/dammuso-topography.png" alt="Toposurface study of a Sicilian dammuso, Revit">
-        <figcaption>Toposurface study of a Sicilian dammuso, Revit</figcaption>
-      </figure>
-      <figure class="shot">
-        <img src="assets/roots/ring-house-study.png" alt="Personal Revit study of MZ Architects' Ring House, exploded view">
-        <figcaption>Personal Revit study of MZ Architects' Ring House, exploded view</figcaption>
-      </figure>
-    </div>
-    <div class="repo" style="margin-top:var(--s3);">
-      <a class="btn" href="roots/">Read the full story →</a>
+      <a class="btn" href="roots/">Read the full story</a>
     </div>
   </div>
 </section>
@@ -249,17 +246,20 @@
 <footer id="contact">
   <div class="wrap">
     <p class="pingline">Open to AI Engineer, Forward Deployed and AI Solutions roles.
-      <span class="sub">Based in Palermo, Italy · EU citizen · working across Europe.</span>
+      <span class="sub">Based in Palermo, Italy. EU citizen, working across Europe, after 4 years of B2B technical consulting in manufacturing.</span>
     </p>
     <div class="contactrow">
       <a class="btn primary" href="mailto:vicio.dicara@gmail.com">Email me</a>
       <a class="btn" href="https://github.com/VicDc">GitHub</a>
       <a class="btn" href="https://www.linkedin.com/in/viciodicara/">LinkedIn</a>
     </div>
-    <p class="tiny">Remember this: Try. · There are 10 types of people in the world: those who understand binary and those who don't.</p>
+    <p class="tiny">Remember this: Try. There are 10 types of people in the world: those who understand binary and those who don’t.</p>
+    <p class="tiny credits">Elevation data: Copernicus GLO-30 DEM, © DLR e.V. 2010-2014 and © Airbus Defence and Space GmbH 2014-2018, provided under COPERNICUS by the European Union and ESA.</p>
   </div>
 </footer>
 
 <script src="assets/js/site.js"></script>
+<script src="assets/data/dem-palermo.js"></script>
+<script src="assets/js/cloud.js"></script>
 </body>
 </html>

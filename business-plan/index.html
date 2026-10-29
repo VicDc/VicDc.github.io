@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Business Plan AI · Vicio Di Cara</title>
+<title>Business Plan AI, Vicio Di Cara</title>
 <meta name="description" content="Local multi-agent system that drafts business plans and verifies the numbers with deterministic Python. Case study.">
-<meta name="theme-color" content="#6A46EC">
+<meta name="theme-color" content="#14121f">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght,CRSV,SHRP@200..500,0,0..100&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/style.css">
-<script>!(function(){var t=localStorage.getItem("theme");t?document.documentElement.setAttribute("data-theme",t):window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.setAttribute("data-theme","dark")})()</script>
+<script>document.documentElement.classList.add('js');!(function(){try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}})()</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -26,8 +26,8 @@
         <li><a href="../#contact">Contact</a></li>
       </ul>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme">
-        <span class="icon-sun" aria-hidden="true">☀️</span>
-        <span class="icon-moon" aria-hidden="true">🌙</span>
+        <svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
       </button>
     </div>
   </div>
@@ -35,7 +35,7 @@
 
 <header class="case-hero">
   <div class="wrap">
-    <a class="crumb" href="../">← All projects</a>
+    <a class="crumb" href="../">All projects</a>
     <h1>Business Plan AI</h1>
     <p class="lede">A local, privacy-first multi-agent system that turns a raw business idea into a structured plan for Italian micro-businesses, and then refuses to trust its own arithmetic.</p>
     <div class="case-meta">
@@ -57,10 +57,10 @@
   <div class="wrap">
     <div class="sec-head"><h2 id="architecture-h">Architecture</h2></div>
     <div class="stats">
-      <div class="stat"><div class="n">6+1</div><div class="l">specialist agents + Orchestrator</div></div>
-      <div class="stat"><div class="n">6</div><div class="l">LLM-based consistency checks</div></div>
-      <div class="stat"><div class="n">≤3</div><div class="l">revision cycles before manual-review fallback</div></div>
-      <div class="stat"><div class="n">5%</div><div class="l">tolerance in deterministic verification</div></div>
+      <div class="stat ticks"><div class="n">6+1</div><div class="l">specialist agents + Orchestrator</div></div>
+      <div class="stat ticks"><div class="n">6</div><div class="l">LLM-based consistency checks</div></div>
+      <div class="stat ticks"><div class="n">≤3</div><div class="l">revision cycles before manual-review fallback</div></div>
+      <div class="stat ticks"><div class="n">5%</div><div class="l">tolerance in deterministic verification</div></div>
     </div>
     <div class="prose">
       <p>A guided <strong>IntakeAgent</strong> normalizes free-text input into a structured business profile. Six specialist agents (Vision, Market, Team, Setup, Financial, Funding) then draft their sections under an <strong>Orchestrator</strong> that applies six LLM-based consistency checks and issues targeted revisions, up to three cycles, before a separate ReportWriter produces the final document. The whole system runs on local inference (LM Studio or Ollama, Gemma) with no cloud dependency, so a business idea never leaves the machine.</p>
@@ -81,7 +81,7 @@
       <p>The table below shows the shape of the check (illustrative values, replace with a real export):</p>
     </div>
     <table class="tbl">
-      <caption class="tiny" style="text-align:left;margin-bottom:8px">Deterministic checks · 5% tolerance · illustrative values</caption>
+      <caption class="tiny" style="text-align:left;margin-bottom:8px">Deterministic checks at 5% tolerance, illustrative values</caption>
       <thead><tr><th scope="col">Check</th><th scope="col">Declared</th><th scope="col">Re-derived</th><th scope="col">Δ</th><th scope="col">Status</th></tr></thead>
       <tbody>
         <tr><td>Unit margin</td><td>€ 14.50</td><td>€ 14.50</td><td>0.0%</td><td class="ok">OK</td></tr>
@@ -111,8 +111,8 @@
 <footer>
   <div class="wrap">
     <div class="casenav">
-      <a class="btn" href="../lisai/">← Prev: LisAI Interpreter</a>
-      <a class="btn" href="../watershed/">Next: Watershed-AI →</a>
+      <a class="btn" href="../lisai/">Previous: LisAI Interpreter</a>
+      <a class="btn" href="../watershed/">Next: Watershed-AI</a>
     </div>
   </div>
 </footer>
