@@ -105,7 +105,7 @@
   }
 
   function sync() {
-    var run = (!reel || reel.classList.contains('is-running')) && fig.classList.contains('is-active');
+    var run = (!reel || (reel.classList.contains('is-running') && !reel.classList.contains('is-still'))) && fig.classList.contains('is-active');
     if (run && !raf) { last = performance.now(); raf = requestAnimationFrame(frame); }
     if (!run && raf) { cancelAnimationFrame(raf); raf = 0; }
   }

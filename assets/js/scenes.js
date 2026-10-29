@@ -6,6 +6,8 @@
      workbook: capital 26,910 (own 7,500, loan 19,410, own share 27.9%), break-even 225 nights claimed,
      361 with the 620/month rent, 730 available.
    - WhatsApp Toolkit: the sample contacts and pacing settings in docs/screenshots/agent.png.
+   - Sherpa Alzheimer: the flow in its README and user guide (role, retrieval, the 0.55 citation gate,
+     the supervisor); which drawn sources pass is a depiction, no score is printed.
    Each scene draws frame t (ms into its 9 s turn); a held reel shows the last frame. */
 (function () {
   var reel = document.querySelector('.reel');
@@ -47,7 +49,7 @@
     for (var gy = top; gy <= bot; gy += 6) for (var d = 0; d < 3; d++) dot(ctx, gx + d * 4, gy + d * 2, 1.4);
     var leaked = 0, stopped = 0;
     for (var i = 0; i < 170; i++) {
-      var born = r() * (half - 600), bad = r() < 0.34, z = r(), y = top + 8 + r() * (bot - top - 16);
+      var born = r() * half - 2600 * 0.7, bad = r() < 0.34, z = r(), y = top + 8 + r() * (bot - top - 16);
       var blocked = bad && r() < (full ? 1 : 0.417);
       if (born > local) continue;
       var p = (local - born) / travel, size = 2 + z * 2.6, x = W * 0.06 + p * (W * 0.9);
@@ -81,7 +83,7 @@
       // n points, cols wide, dropping in from above in order
       for (var i = 0; i < n; i++) {
         var k = from + i, cx = x + (k % cols) * s, cy = base - Math.floor(k / cols) * s;
-        var land = delay + i * 22, p = ease((t - land) / 500);
+        var land = delay + i * 14, p = ease((t - land) / 420);
         if (p <= 0) continue;
         ctx.globalAlpha = p;
         ctx.fillStyle = colourAt(i);
@@ -93,13 +95,13 @@
     // capital, one point = 250 euro: own 30, loan 78
     var x0 = W * 0.08;
     stack(x0, 30, 0, function () { return col.hi; }, 0);
-    stack(x0, 78, 30, function () { return col.lo; }, 700);
+    stack(x0, 78, 30, function () { return col.lo; }, 350);
     // nights, one point = 5 nights: capacity 146, claimed 45, re-derived 72 (45 + 27 for the rent)
     var x1 = W * 0.4, x2 = x1 + gw + s * 3, x3 = x2 + gw + s * 3;
-    stack(x1, 146, 0, function () { return col.lo; }, 1400);
-    stack(x2, 45, 0, function () { return col.mid; }, 3200);
-    stack(x3, 45, 0, function () { return col.mid; }, 4300);
-    stack(x3, 27, 45, function () { return col.accent; }, 5400);
+    stack(x1, 146, 0, function () { return col.lo; }, 700);
+    stack(x2, 45, 0, function () { return col.mid; }, 2200);
+    stack(x3, 45, 0, function () { return col.mid; }, 3100);
+    stack(x3, 27, 45, function () { return col.accent; }, 4000);
     var shown = function (at) { return Math.max(0, Math.min(1, (t - at) / 500)); };
     var lbl = base + 22;
     text(ctx, 'Start-up capital', x0, lbl, 12, col.ink2, 400);
@@ -112,10 +114,10 @@
     text(ctx, '361', x3, lbl + 18, 12, col.muted);
     text(ctx, 'Break-even, nights a year', x1, H * 0.1, 15, col.ink, 400);
     text(ctx, 'Verified in Python, no model in the loop', x1, H * 0.1 + 20, 12, col.muted);
-    ctx.globalAlpha = shown(2600);
+    ctx.globalAlpha = shown(1600);
     text(ctx, 'Own capital 27.9 %', x0, base - 24 * s, 13, col.ink, 400);
     text(ctx, 'inside the 25 to 30 % band', x0, base - 24 * s + 18, 12, col.muted);
-    ctx.globalAlpha = shown(6200);
+    ctx.globalAlpha = shown(4500);
     text(ctx, '+136 nights', x3 + gw + s * 2, base - 10 * s, 15, col.accent, 400);
     text(ctx, 'rent of 620 € a month', x3 + gw + s * 2, base - 10 * s + 18, 12, col.ink2);
     text(ctx, 'was left out', x3 + gw + s * 2, base - 10 * s + 34, 12, col.ink2);
@@ -156,7 +158,65 @@
     text(ctx, 'Pauses of 6 to 33 s, a break every 25 messages, 50 a day at most', left, H * 0.9, 12, col.muted);
   }
 
-  var defs = { 'scene-hookus': gate, 'scene-bp': ledger, 'scene-wa': campaign };
+  /* ---------- Sherpa Alzheimer: retrieval through the 0.55 gate ---------- */
+  var roles = ['Patient', 'Caregiver', 'Doctor'];
+  function sherpa(ctx, W, H, t) {
+    var r = rng(11), mid = H * 0.5;
+    var qx = W * 0.08, dbx = W * 0.36, gx = W * 0.6, sx = W * 0.82;
+    // the knowledge base: a cloud of source points
+    var pick = [];
+    for (var i = 0; i < 260; i++) {
+      var a = r() * Math.PI * 2, d = Math.sqrt(r()), z = r();
+      var x = dbx + Math.cos(a) * d * W * 0.12, y = mid + Math.sin(a) * d * H * 0.24;
+      var chosen = i % 22 === 0, pass = chosen && r() < 0.5;
+      if (chosen) pick.push([x, y, pass, z]);
+      ctx.globalAlpha = 0.35 + z * 0.5;
+      ctx.fillStyle = z > 0.6 ? col.mid : col.lo;
+      dot(ctx, x, y, 1.6 + z * 1.6);
+    }
+    ctx.globalAlpha = 1;
+    // the gate
+    ctx.fillStyle = col.rule;
+    for (var gy = mid - H * 0.26; gy <= mid + H * 0.26; gy += 6) for (var k = 0; k < 3; k++) dot(ctx, gx + k * 4, gy + k * 2, 1.4);
+    // the question travels in, the persona cycles
+    var role = roles[Math.min(2, Math.floor(t / 3000))];
+    var q = ease(t / 1200);
+    ctx.fillStyle = col.hi;
+    for (var tr = 0; tr < 8; tr++) { ctx.globalAlpha = q < 1 ? 0.7 - tr * 0.08 : 0; dot(ctx, qx + q * (dbx - qx - W * 0.12) - tr * 6, mid, 2.4); }
+    ctx.globalAlpha = 1;
+    dot(ctx, qx + q * (dbx - qx - W * 0.12), mid, 7);
+    // retrieved sources leave the cloud for the gate; the ones under 0.55 stop and fade
+    pick.forEach(function (p, n) {
+      var start = 1300 + n * 140, go = ease((t - start) / 1400);
+      if (go <= 0) return;
+      var x = p[0] + go * (gx - 10 - p[0]), y = p[1] + go * (mid + (p[1] - mid) * 0.5 - p[1]);
+      if (go >= 1) {
+        if (!p[2]) { ctx.globalAlpha = Math.max(0.15, 1 - (t - start - 1400) / 900); ctx.fillStyle = col.muted; dot(ctx, x, y, 4); ctx.globalAlpha = 1; return; }
+        var on = ease((t - start - 1500) / 1400);
+        x = gx + 14 + on * (sx - gx - 14); y = y + on * (mid - y);
+      }
+      ctx.fillStyle = p[2] ? col.accent : col.hi;
+      dot(ctx, x, y, 5);
+    });
+    // the supervisor, then the answer
+    var done = Math.max(0, Math.min(1, (t - 6200) / 600));
+    ctx.fillStyle = col.ink; dot(ctx, sx, mid, 9);
+    ctx.globalAlpha = done; ctx.fillStyle = col.accent;
+    for (var ax = sx + 14; ax < W * 0.96; ax += 7) dot(ctx, ax, mid, 2.4);
+    ctx.globalAlpha = 1;
+    text(ctx, role, qx, mid - 18, 13, col.ink, 400);
+    text(ctx, 'asks', qx, mid + 26, 12, col.muted);
+    text(ctx, 'Knowledge base', dbx, mid - H * 0.28, 12, col.ink2, 400, 'center');
+    text(ctx, 'Score 0.55 or more', gx, mid - H * 0.28, 12, col.ink2, 400, 'center');
+    text(ctx, 'Supervisor', sx, mid - 20, 12, col.ink2, 400, 'center');
+    ctx.globalAlpha = done;
+    text(ctx, 'Answer, citing only', sx, mid + 30, 12, col.accent, 400, 'center');
+    text(ctx, 'what cleared the gate', sx, mid + 46, 12, col.accent, 400, 'center');
+    ctx.globalAlpha = 1;
+    text(ctx, 'Tone adapts to the role: patient, caregiver or doctor', W * 0.08, H * 0.9, 12, col.muted);
+  }
+
+  var defs = { 'scene-hookus': gate, 'scene-bp': ledger, 'scene-wa': campaign, 'scene-sherpa': sherpa };
   var live = [];
   Object.keys(defs).forEach(function (id) {
     var sc = document.getElementById(id);

@@ -1,6 +1,7 @@
 /* hero reel: one scene at a time, nine seconds each.
-   Holds still until seen, pauses off screen, on hover, on focus, under reduced motion
-   and from the visible Pause button; the tabs pick a scene by hand. */
+   The rotation stops on hover over the stage and on focus anywhere in the reel; everything stops
+   off screen, under reduced motion and from the visible Pause button. A scene picked from its tab
+   plays at once: focus holds the rotation, never the scene. */
 (function () {
   var reel = document.querySelector('.reel');
   if (!reel) return;
@@ -9,7 +10,7 @@
   var btn = reel.querySelector('[data-loop-toggle]');
   var reduce = matchMedia('(prefers-reduced-motion: reduce)');
   var SCENE_MS = 9000;
-  var s = { seen: false, hover: false, focus: false, held: reduce.matches };
+  var s = { seen: false, hover: false, focus: false, stageFocus: false, held: reduce.matches };
   var index = 0, spent = 0, last = 0, raf = 0;
 
   function show(i, moveFocus) {
@@ -30,11 +31,13 @@
   }
 
   function sync() {
-    var run = s.seen && !s.hover && !s.focus && !s.held;
-    reel.classList.toggle('is-running', run);
+    var animate = s.seen && !s.held, rotate = animate && !s.hover && !s.focus;
+    reel.classList.toggle('is-running', animate);
     reel.classList.toggle('is-held', s.held);
-    if (run && !raf) { last = performance.now(); raf = requestAnimationFrame(tick); }
-    if (!run && raf) { cancelAnimationFrame(raf); raf = 0; }
+    // the ambient loop (the smear) holds still while the pointer or focus is on the stage itself
+    reel.classList.toggle('is-still', s.hover || s.stageFocus);
+    if (rotate && !raf) { last = performance.now(); raf = requestAnimationFrame(tick); }
+    if (!rotate && raf) { cancelAnimationFrame(raf); raf = 0; }
     if (btn) btn.textContent = s.held ? 'Play' : 'Pause';
   }
 
@@ -50,8 +53,8 @@
   [['pointerenter', 'hover', true], ['pointerleave', 'hover', false]].forEach(function (a) {
     stage.addEventListener(a[0], function () { s[a[1]] = a[2]; sync(); });
   });
-  reel.addEventListener('focusin', function () { s.focus = true; sync(); });
-  reel.addEventListener('focusout', function () { s.focus = false; sync(); });
+  reel.addEventListener('focusin', function (e) { s.focus = true; s.stageFocus = stage.contains(e.target); sync(); });
+  reel.addEventListener('focusout', function () { s.focus = false; s.stageFocus = false; sync(); });
   reduce.addEventListener('change', function (e) { s.held = e.matches; sync(); });
   new IntersectionObserver(function (e) { s.seen = e[0].isIntersecting; sync(); }).observe(reel);
   show(0);

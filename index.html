@@ -78,14 +78,8 @@
           <p class="scene-cap">WhatsApp Toolkit mid-campaign, sample contacts from the app: a name that matches under 0.6 waits for a human before sending.</p>
         </div>
         <div class="scene" id="scene-sherpa" role="tabpanel" aria-labelledby="tab-sherpa">
-          <div class="window chat ticks" aria-label="Sherpa chat flow from its user guide">
-            <p class="msg bot">Who are you?</p>
-            <p class="msg chips"><span>Person diagnosed</span><span class="on">Family member or caregiver</span><span>Healthcare professional</span></p>
-            <p class="msg me">How do I handle nighttime confusion?</p>
-            <p class="msg bot">thinking…</p>
-            <p class="msg gate">Only sources scoring 0.55 or more can be cited.</p>
-          </div>
-          <p class="scene-cap">Sherpa Alzheimer, the flow from its user guide: pick a role, ask, and the answer may cite only sources that clear the 0.55 gate.</p>
+          <canvas role="img" aria-label="Sherpa Alzheimer: a caregiver question goes into the knowledge base, retrieved sources meet a 0.55 score gate, only the ones that clear it reach the supervisor and the answer"></canvas>
+          <p class="scene-cap">Sherpa Alzheimer, 2nd place at the OPIT Hackathon 2026: retrieval feeds a 0.55 score gate, and the answer cites only what clears it.</p>
         </div>
       </div>
       <figcaption class="reel-bar">
@@ -113,7 +107,7 @@
 
     <div class="stack-list">
       <article class="proj">
-        <figure class="proj-media"><img src="assets/img/thumbs/hookus-pocus.jpg" alt="hookus-pocus Telegram bot blocking a close and a delete by role, and refusing an injected instruction" loading="lazy" width="960" height="540"></figure>
+        <figure class="proj-media"><img src="assets/img/thumbs/hookus-pocus.jpg" alt="hookus-pocus action gate drawn as points: forbidden actions in orange, some slipping through without guardrails" loading="lazy" width="960" height="540"></figure>
         <div class="proj-top">
           <h3><a href="https://vicdc.github.io/hp-site-preview/">hookus-pocus</a></h3>
           <span class="award"><b>MSc thesis</b>, OPIT</span>
@@ -124,7 +118,7 @@
       </article>
 
       <article class="proj">
-        <figure class="proj-media"><img src="assets/img/thumbs/malaria.jpg" alt="Blood smear with each malaria parasite segmented by YOLOv11 in red" loading="lazy" width="960" height="540"></figure>
+        <figure class="proj-media"><img src="assets/img/thumbs/malaria.jpg" alt="A blood smear from Malaria AI Scope as a point cloud, the parasites YOLOv11 found in orange" loading="lazy" width="960" height="540"></figure>
         <div class="proj-top">
           <h3><a href="malaria/">Malaria AI Scope</a></h3>
           <span class="award"><b>1st place</b>, AWS University Engagement Program</span>
@@ -135,7 +129,7 @@
       </article>
 
       <article class="proj">
-        <figure class="proj-media"><img src="assets/img/thumbs/sherpa.jpg" alt="Sherpa Alzheimer architecture: RAG agent, speech agent, supervisor agent, local vector DB and persona adaptor" loading="lazy" width="960" height="540"></figure>
+        <figure class="proj-media"><img src="assets/img/thumbs/sherpa.jpg" alt="Sherpa Alzheimer retrieval: a question meets the knowledge base, sources that clear the 0.55 gate reach the supervisor" loading="lazy" width="960" height="540"></figure>
         <div class="proj-top">
           <h3><a href="https://github.com/VicDc/Alzheimer-assistant">Sherpa Alzheimer</a></h3>
           <span class="award"><b>2nd place</b>, OPIT Hackathon 2026</span>
@@ -146,7 +140,7 @@
       </article>
 
       <article class="proj">
-        <figure class="proj-media"><img src="assets/img/thumbs/business-plan.jpg" alt="Break-even waterfall chart rendered by Business Plan AI" loading="lazy" width="700" height="500"></figure>
+        <figure class="proj-media"><img src="assets/img/thumbs/business-plan.jpg" alt="Business Plan AI break-even as columns of points: 225 nights claimed, 361 re-derived, the gap in orange" loading="lazy" width="960" height="540"></figure>
         <div class="proj-top">
           <h3><a href="business-plan/">Business Plan AI</a></h3>
           <span class="award res">Active development</span>
@@ -157,7 +151,7 @@
       </article>
 
       <article class="proj">
-        <figure class="proj-media"><img src="assets/img/thumbs/whatsapp.jpg" alt="WhatsApp Agent desktop app with contact list and colour-coded send status" loading="lazy" width="800" height="450"></figure>
+        <figure class="proj-media"><img src="assets/img/thumbs/whatsapp.jpg" alt="WhatsApp Toolkit campaign lanes: sample contacts moving from queue to sent, one held at the name check" loading="lazy" width="960" height="540"></figure>
         <div class="proj-top">
           <h3><a href="https://github.com/VicDc/WhatsApp_Toolkit-vd">WhatsApp Toolkit</a></h3>
           <span class="award res">Proprietary product</span>
@@ -179,7 +173,7 @@
       </article>
 
       <article class="proj">
-        <figure class="proj-media"><img src="assets/img/thumbs/watershed.jpg" alt="Watershed-AI 3D terrain with satellite imagery" loading="lazy" width="800" height="500"></figure>
+        <figure class="proj-media"><img src="assets/img/thumbs/watershed.jpg" alt="Watershed-AI test tile near Palermo as a point cloud, the highest ground in orange" loading="lazy" width="960" height="540"></figure>
         <div class="proj-top">
           <h3><a href="watershed/">Watershed-AI</a></h3>
           <span class="award res">Side project</span>
