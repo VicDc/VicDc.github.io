@@ -260,6 +260,7 @@
   }
   var BONES = [[0,1],[1,2],[2,3],[3,4],[0,5],[5,6],[6,7],[7,8],[5,9],[9,10],[10,11],[11,12],[9,13],[13,14],[14,15],[15,16],[13,17],[0,17],[17,18],[18,19],[19,20]];
   function lis(ctx, W, H, t) {
+    t = Math.max(0, t);
     var step = SCENE_MS / LETTERS.length, li = Math.min(LETTERS.length - 1, Math.floor(t / step));
     var into = (t - li * step) / step, prev = LETTERS[Math.max(0, li - 1)], cur = LETTERS[li];
     var m = li === 0 ? 1 : ease(into / 0.3), mix = function (a, b) { return a + (b - a) * m; };
@@ -313,7 +314,8 @@
 
   var raf = 0, last = 0;
   function frame(now) {
-    var dt = now - last; last = now;
+    // a rAF timestamp can sit a hair before performance.now(): never step time backwards
+    var dt = Math.max(0, now - last); last = now;
     live.forEach(function (it) {
       if (!it.scene.classList.contains('is-active')) return;
       it.t = solo ? (it.t + dt) % (SCENE_MS + 1800) : Math.min(SCENE_MS, it.t + dt);

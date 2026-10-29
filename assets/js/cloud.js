@@ -99,7 +99,7 @@
   }
 
   function frame(now) {
-    elapsed += now - last; last = now;
+    elapsed += Math.max(0, now - last); last = now;
     draw();
     raf = requestAnimationFrame(frame);
   }

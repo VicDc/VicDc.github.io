@@ -25,7 +25,7 @@
   }
 
   function tick(now) {
-    spent += now - last; last = now;
+    spent += Math.max(0, now - last); last = now;
     if (spent >= SCENE_MS) show(index + 1);
     raf = requestAnimationFrame(tick);
   }
