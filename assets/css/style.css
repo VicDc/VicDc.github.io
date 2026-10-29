@@ -208,6 +208,11 @@ section.alt{background:var(--paper-2)}
 }
 .tag.hl{color:var(--brand-deep);background:var(--tint);border-color:var(--tag-hl-border)}
 .repo{font-size:.9rem;font-weight:600;margin-top:var(--s2);display:flex;gap:22px;flex-wrap:wrap}
+.proj.has-thumb{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:28px;align-items:start}
+.proj-thumb{
+  order:2;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center top;
+  border-radius:8px;border:1px solid var(--line);background:var(--paper-2);
+}
 
 /* ---------- principles ---------- */
 .quotebox{
@@ -364,6 +369,8 @@ figure.shot figcaption{font-size:.8rem;color:var(--meta);margin-top:8px}
 /* ---------- responsive & a11y ---------- */
 @media (max-width:640px){
   nav ul{display:none}
+  .proj.has-thumb{grid-template-columns:1fr;gap:18px}
+  .proj-thumb{order:0}
   :root{--s5:3rem;--s6:4rem}
 }
 @media (prefers-reduced-motion:reduce){
