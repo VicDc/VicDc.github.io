@@ -1,10 +1,10 @@
 /* hero point cloud: one blood smear from Malaria AI Scope, raised by how dark each sample is,
    the cells under the YOLOv11 segmentation masks lit orange as "found".
    Turns once every seventy seconds, a sweep lights it every seven seconds.
-   Runs only while its scene is the active one and the reel is running (reel.js owns pause). */
+   Runs only while its scene is the active one and its reel (or solo figure on a case page) is running. */
 (function () {
   var fig = document.querySelector('.cloud');
-  var reel = document.querySelector('.reel');
+  var reel = document.querySelector('.reel, .solo');
   var canvas = document.getElementById('cloud');
   if (!fig || !canvas || !canvas.getContext) return;
   var ctx = canvas.getContext('2d');
@@ -43,7 +43,7 @@
       var x = i % w, y = (i / w) | 0;
       pts[i * 4] = (x - w / 2) / span;
       pts[i * 4 + 1] = (y - h / 2) / span;
-      pts[i * 4 + 2] = z[i] / 255 * RELIEF;
+      pts[i * 4 + 2] = z[i] / 255 * (d.relief || RELIEF);
       pts[i * 4 + 3] = z[i] / 255;
     }
     anchor = d.anchor;

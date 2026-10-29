@@ -10,7 +10,9 @@
      the supervisor); which drawn sources pass is a depiction, no score is printed.
    Each scene draws frame t (ms into its 9 s turn); a held reel shows the last frame. */
 (function () {
-  var reel = document.querySelector('.reel');
+  // the home page reel, or one looping figure on a case page (.solo, run by solo.js)
+  var reel = document.querySelector('.reel, .solo');
+  var solo = reel && reel.classList.contains('solo');
   if (!reel) return;
   var SCENE_MS = 9000;
   var reduce = matchMedia('(prefers-reduced-motion: reduce)');
@@ -216,7 +218,81 @@
     text(ctx, 'Tone adapts to the role: patient, caregiver or doctor', W * 0.08, H * 0.9, 12, col.muted);
   }
 
-  var defs = { 'scene-hookus': gate, 'scene-bp': ledger, 'scene-wa': campaign, 'scene-sherpa': sherpa };
+  /* ---------- LisAI: a hand on the 21 MediaPipe landmarks spelling C, I, A, O ---------- */
+  // the hand is drawn, not tracked: LIS letter shapes posed on MediaPipe's hand layout
+  var FINGERS = [ // base (x, y), segment lengths
+    [[-0.3, 0.88], [0.4, 0.26, 0.2]], [[-0.1, 0.92], [0.45, 0.29, 0.21]],
+    [[0.12, 0.88], [0.42, 0.27, 0.2]], [[0.32, 0.8], [0.33, 0.21, 0.18]]
+  ];
+  var LETTERS = [ // finger curls (index, middle, ring, pinky), thumb [curl, spread], yaw
+    ['C', [0.42, 0.42, 0.42, 0.42], [0.25, 0.9], 1.15],
+    ['I', [1, 1, 1, 0], [0.85, 0.2], 0.25],
+    ['A', [1, 1, 1, 1], [0, 0.05], 0.35],
+    ['O', [0.68, 0.7, 0.72, 0.75], [0.55, 0.85], 1.1]
+  ];
+  function rot(v, a, axis) { // rotate [x,y,z] about x or y
+    var c = Math.cos(a), s = Math.sin(a);
+    return axis === 'x' ? [v[0], v[1] * c - v[2] * s, v[1] * s + v[2] * c] : [v[0] * c + v[2] * s, v[1], -v[0] * s + v[2] * c];
+  }
+  function pose(curls, thumb) {
+    var p = [[0, 0, 0]];
+    // thumb: CMC, MCP, IP, tip; curl folds it across the palm, spread opens it out
+    var dir = [-0.15 - thumb[1] * 0.65 + thumb[0] * 0.9, 0.7, thumb[0] * 0.5], base = [-0.2, 0.22, 0.06];
+    var lens = [0.3, 0.25, 0.2], cur = base.slice();
+    p.push(cur.slice());
+    for (var k = 0; k < 3; k++) {
+      var a = (thumb[0] * 0.5 - thumb[1] * 0.25) * (k + 1) * 0.5;
+      var d = rot(dir, a, 'y'), n = Math.hypot(d[0], d[1], d[2]);
+      cur = [cur[0] + d[0] / n * lens[k], cur[1] + d[1] / n * lens[k], cur[2] + d[2] / n * lens[k]];
+      p.push(cur.slice());
+    }
+    FINGERS.forEach(function (f, i) {
+      var c = curls[i], at = [f[0][0], f[0][1], 0], ang = 0, bends = [1.3, 1.4, 0.8];
+      p.push(at.slice());
+      for (var k = 0; k < 3; k++) {
+        ang += c * bends[k];
+        var d = [0, Math.cos(ang), Math.sin(ang)];
+        at = [at[0], at[1] + d[1] * f[1][k], at[2] + d[2] * f[1][k]];
+        p.push(at.slice());
+      }
+    });
+    return p; // 21 landmarks in MediaPipe order
+  }
+  var BONES = [[0,1],[1,2],[2,3],[3,4],[0,5],[5,6],[6,7],[7,8],[5,9],[9,10],[10,11],[11,12],[9,13],[13,14],[14,15],[15,16],[13,17],[0,17],[17,18],[18,19],[19,20]];
+  function lis(ctx, W, H, t) {
+    var step = SCENE_MS / LETTERS.length, li = Math.min(LETTERS.length - 1, Math.floor(t / step));
+    var into = (t - li * step) / step, prev = LETTERS[Math.max(0, li - 1)], cur = LETTERS[li];
+    var m = li === 0 ? 1 : ease(into / 0.3), mix = function (a, b) { return a + (b - a) * m; };
+    var curls = cur[1].map(function (c, i) { return mix(prev[1][i], c); });
+    var thumb = [mix(prev[2][0], cur[2][0]), mix(prev[2][1], cur[2][1])];
+    var yaw = mix(prev[3], cur[3]) + Math.sin(t / 1400) * 0.12, read = into > 0.45;
+    var pts = pose(curls, thumb).map(function (v) { return rot(rot([v[0], v[1] - 0.75, v[2]], -0.25, 'x'), yaw, 'y'); });
+    var scale = Math.min(W * 0.6, H * 0.37), cx = W * 0.5, cy = H * 0.46;
+    var proj = pts.map(function (v) { var k = 4 / (4 + v[2]); return [cx + v[0] * scale * k, cy - v[1] * scale * k, v[2]]; });
+    // the palm as a field of points (wrist, index base, pinky base), then the bones as runs of points
+    var pr = rng(5);
+    ctx.fillStyle = col.lo;
+    for (var k = 0; k < 140; k++) {
+      var u = pr(), v = pr(); if (u + v > 1) { u = 1 - u; v = 1 - v; }
+      var A = proj[0], B = u < 0.5 ? proj[5] : proj[9], C = v < 0.5 ? proj[17] : proj[13];
+      ctx.globalAlpha = 0.55; dot(ctx, A[0] + (B[0] - A[0]) * u + (C[0] - A[0]) * v, A[1] + (B[1] - A[1]) * u + (C[1] - A[1]) * v, 2);
+    }
+    ctx.fillStyle = col.mid;
+    BONES.forEach(function (b) {
+      var a = proj[b[0]], c = proj[b[1]], n = Math.max(3, Math.round(Math.hypot(c[0] - a[0], c[1] - a[1]) / 4));
+      for (var k = 1; k < n; k++) { var f = k / n, z = a[2] + (c[2] - a[2]) * f; ctx.globalAlpha = 0.55 + 0.35 * (1 - z); dot(ctx, a[0] + (c[0] - a[0]) * f, a[1] + (c[1] - a[1]) * f, 2.6 - z); }
+    });
+    ctx.globalAlpha = 1;
+    proj.forEach(function (q, i) { ctx.fillStyle = read ? col.accent : col.hi; dot(ctx, q[0], q[1], (i === 0 ? 9 : 7) - q[2] * 2); });
+    // the subtitle: letters read so far
+    var spelled = LETTERS.slice(0, li + (read ? 1 : 0)).map(function (l) { return l[0]; }).join(' ');
+    text(ctx, spelled || ' ', W * 0.5, H * 0.86, 30, col.ink, 300, 'center');
+    if (read) text(ctx, cur[0], cx + scale * 1.3, H * 0.3, 52, col.accent, 300, 'center');
+    if (li === LETTERS.length - 1 && into > 0.75) text(ctx, '“ciao”', W * 0.5, H * 0.94, 15, col.ink2, 400, 'center');
+    text(ctx, '21 hand landmarks of 543 per frame', W * 0.06, H * 0.08, 12, col.muted);
+  }
+
+  var defs = { 'scene-hookus': gate, 'scene-bp': ledger, 'scene-wa': campaign, 'scene-sherpa': sherpa, 'scene-lis': lis };
   var live = [];
   Object.keys(defs).forEach(function (id) {
     var sc = document.getElementById(id);
@@ -232,7 +308,7 @@
     if (item.canvas.width !== Math.round(r.width * dpr)) { item.canvas.width = Math.round(r.width * dpr); item.canvas.height = Math.round(r.height * dpr); }
     item.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     item.ctx.clearRect(0, 0, r.width, r.height);
-    item.draw(item.ctx, r.width, r.height, item.t);
+    item.draw(item.ctx, r.width, r.height, Math.min(SCENE_MS - 1, item.t));
   }
 
   var raf = 0, last = 0;
@@ -240,7 +316,7 @@
     var dt = now - last; last = now;
     live.forEach(function (it) {
       if (!it.scene.classList.contains('is-active')) return;
-      it.t = Math.min(SCENE_MS, it.t + dt);
+      it.t = solo ? (it.t + dt) % (SCENE_MS + 1800) : Math.min(SCENE_MS, it.t + dt);
       paint(it);
     });
     raf = requestAnimationFrame(frame);

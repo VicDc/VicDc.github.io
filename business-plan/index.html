@@ -34,7 +34,8 @@
 </nav>
 
 <header class="case-hero">
-  <div class="wrap">
+  <div class="wrap has-scene">
+    <div class="case-text">
     <a class="crumb" href="../">All projects</a>
     <h1>Business Plan AI</h1>
     <p class="lede">A local, privacy-first multi-agent system that turns a raw business idea into a structured plan for Italian micro-businesses, and then refuses to trust its own arithmetic.</p>
@@ -46,6 +47,15 @@
       <a class="btn primary" href="https://github.com/VicDc/business-plan-ai">View the code</a>
       <a class="btn" href="#verification">The verification layer</a>
     </div>
+    </div>
+    <figure class="solo" data-loop>
+      <div class="reel-stage">
+        <div class="scene is-active" id="scene-bp">
+          <canvas role="img" aria-label="Business Plan AI re-checks a guesthouse plan in Python: own capital is 27.9% of 26,910 euro; break-even is 361 nights a year once the 620 euro monthly rent is counted, not the 225 claimed, out of 730 available"></canvas>
+        </div>
+      </div>
+      <figcaption class="reel-bar"><span class="scene-note">A real draft re-checked in plain Python: break-even rises from 225 to 361 nights once the rent is counted.</span><button class="btn loop-toggle" type="button" data-loop-toggle>Pause</button></figcaption>
+    </figure>
   </div>
 </header>
 
@@ -118,5 +128,7 @@
 </footer>
 
 <script src="../assets/js/site.js"></script>
+<script src="../assets/js/scenes.js"></script>
+<script src="../assets/js/solo.js"></script>
 </body>
 </html>

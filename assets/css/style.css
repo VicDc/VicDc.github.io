@@ -192,6 +192,12 @@ header.case-hero { padding-block: var(--space-3xl) var(--space-2xl); }
 .case-hero .lede { margin-top: var(--space-lg); max-width: 58ch; font-size: var(--text-lead); line-height: 1.45; color: var(--color-ink-2); }
 .case-meta { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-top: var(--space-xl); }
 .case-hero .hero-links { margin-top: var(--space-xl); }
+/* a case page's own point scene, beside its head */
+.case-hero .wrap.has-scene { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--space-2xl); align-items: center; }
+.case-hero .has-scene h1 { font-size: clamp(2.5rem, 3.4vw + 1rem, 4.25rem); }
+.solo { margin: 0; min-width: 0; }
+.solo .reel-stage { max-height: calc(100svh - var(--nav-h) - var(--space-3xl)); }
+.scene-note { max-width: 52ch; font-size: var(--text-xs); color: var(--color-muted); }
 .prose { max-width: 66ch; color: var(--color-ink-2); }
 .prose p { margin-bottom: var(--space-md); }
 .prose h3 { margin: var(--space-xl) 0 var(--space-xs); color: var(--color-ink); }
@@ -238,7 +244,7 @@ figure.shot figcaption { margin-top: var(--space-xs); font-size: var(--text-sm);
   :root { --nav-h: 64px; }
   .nav-right ul { display: none; }
   .hero { min-height: 0; }
-  .hero > .wrap, .stack-grid, .roots-split, .logentry { grid-template-columns: minmax(0, 1fr); }
+  .hero > .wrap, .stack-grid, .roots-split, .logentry, .case-hero .wrap.has-scene { grid-template-columns: minmax(0, 1fr); }
   .hero > .wrap { gap: var(--space-xl); }
   .stack-pane { position: static; }
   .stack-pane h2 { max-width: none; }
@@ -252,6 +258,8 @@ figure.shot figcaption { margin-top: var(--space-xs); font-size: var(--text-sm);
   .proof > div:first-child { border-top: 0; }
   .ledger th { width: 40%; font-size: var(--text-md); }
   .proj-figure { padding: var(--space-lg); }
+  /* the verification table scrolls inside itself on a phone, never the page */
+  .tbl { display: block; overflow-x: auto; white-space: nowrap; }
 }
 @media print {
   nav, .hero-links, .contactrow, .casenav, .loop-toggle { display: none; }

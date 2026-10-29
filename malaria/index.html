@@ -34,7 +34,8 @@
 </nav>
 
 <header class="case-hero">
-  <div class="wrap">
+  <div class="wrap has-scene">
+    <div class="case-text">
     <a class="crumb" href="../">All projects</a>
     <h1>Malaria AI Scope</h1>
     <p class="lede">Automated detection and classification of malaria parasites in blood smear images, built to work across heterogeneous real-world datasets rather than one clean benchmark.</p>
@@ -46,6 +47,16 @@
       <a class="btn primary" href="https://github.com/VicDc/MalariaAI-Scope">View the code</a>
       <a class="btn" href="#slides">See the slides</a>
     </div>
+    </div>
+    <figure class="solo" data-loop>
+      <div class="reel-stage">
+        <div class="scene cloud is-active">
+          <canvas id="cloud" role="img" aria-label="A blood smear from Malaria AI Scope drawn as 23,232 points, the 30 parasites found by YOLOv11 segmentation marked in orange"></canvas>
+          <div class="callout" aria-hidden="true"><span class="leader"></span><span class="tag-box"><small>Parasites found</small><span class="num">30</span><small>P. falciparum, ring stage</small></span></div>
+        </div>
+      </div>
+      <figcaption class="reel-bar"><span class="scene-note">One smear from the clinical GUI, 23,232 points: each parasite YOLOv11 segmented is lit orange.</span><button class="btn loop-toggle" type="button" data-loop-toggle>Pause</button></figcaption>
+    </figure>
   </div>
 </header>
 
@@ -140,5 +151,8 @@
 </footer>
 
 <script src="../assets/js/site.js"></script>
+<script src="../assets/data/malaria-smear.js"></script>
+<script src="../assets/js/cloud.js"></script>
+<script src="../assets/js/solo.js"></script>
 </body>
 </html>

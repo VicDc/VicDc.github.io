@@ -34,7 +34,8 @@
 </nav>
 
 <header class="case-hero">
-  <div class="wrap">
+  <div class="wrap has-scene">
+    <div class="case-text">
     <a class="crumb" href="../">All projects</a>
     <h1>LisAI Interpreter</h1>
     <p class="lede">Real-time recognition of Italian Sign Language (LIS), from webcam frames to Italian text. Built on a custom dataset, because for LIS, unlike ASL, large public corpora barely exist.</p>
@@ -46,6 +47,15 @@
       <a class="btn primary" href="https://github.com/VicDc/LIS_Ai_Capstone">View the code</a>
       <a class="btn" href="#demo">Watch it run</a>
     </div>
+    </div>
+    <figure class="solo" data-loop>
+      <div class="reel-stage">
+        <div class="scene is-active" id="scene-lis">
+          <canvas role="img" aria-label="A hand drawn on the 21 MediaPipe hand landmarks spells C, I, A, O in the LIS alphabet; each letter appears as a subtitle once read, ending in the word ciao"></canvas>
+        </div>
+      </div>
+      <figcaption class="reel-bar"><span class="scene-note">A hand on the 21 MediaPipe landmarks spelling C, I, A, O in LIS, each letter added to the subtitle as it is read. The poses are drawn, not tracked.</span><button class="btn loop-toggle" type="button" data-loop-toggle>Pause</button></figcaption>
+    </figure>
   </div>
 </header>
 
@@ -125,5 +135,7 @@
 </footer>
 
 <script src="../assets/js/site.js"></script>
+<script src="../assets/js/scenes.js"></script>
+<script src="../assets/js/solo.js"></script>
 </body>
 </html>
