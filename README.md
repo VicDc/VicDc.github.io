@@ -58,6 +58,17 @@ The repository is also connected to the Worker in Cloudflare, so a push to the p
 | Redirects | `public/_redirects` |
 | Security headers | `public/_headers` |
 
+## Portfolio previews
+
+`assets/video/*.mp4` are recorded from the canvas scenes:
+
+```sh
+python scripts/render-previews.py OUTPUT_DIR            # all seven
+python scripts/render-previews.py OUTPUT_DIR malaria    # only one
+```
+
+It needs the `playwright` Python package and `ffmpeg`. Check the output, then copy it to `public/assets/video/`. The posters in `public/assets/img/thumbs/` are single frames of the same videos.
+
 ## Requests saved in D1
 
 ```sh
