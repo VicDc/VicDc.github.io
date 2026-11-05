@@ -25,3 +25,8 @@ button, input, select, textarea { font: inherit; }
 @media (prefers-reduced-motion: reduce) { *:not(.keep-motion), *:not(.keep-motion)::before, *:not(.keep-motion)::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } }
 /* photographs: muted con=6 sat=-20 */
 [data-slot] > img { filter: saturate(0.8) contrast(1.06); }
+/* site section switch, shared by the business page and the portfolio */
+.site-switch { display: flex; justify-content: flex-end; gap: var(--space-md); padding: var(--space-xs) var(--gutter); font-size: var(--text-xs); line-height: 1.2; background: var(--color-paper); }
+.site-switch a { display: inline-block; padding: var(--space-xs) var(--space-2xs); color: var(--color-muted); text-decoration: none; }
+.site-switch a:hover { color: var(--color-ink); }
+.site-switch a[aria-current] { color: var(--color-ink); text-decoration: underline; text-decoration-color: var(--color-accent); text-decoration-thickness: 2px; text-underline-offset: 0.4em; }
