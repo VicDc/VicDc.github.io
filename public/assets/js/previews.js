@@ -15,6 +15,15 @@
     es.forEach(function (e) { seen.set(e.target, e.isIntersecting); sync(e.target); });
   }, { rootMargin: '120px 0px' });
   vids.forEach(function (v) { io.observe(v); });
+  // shortcut: without JavaScript the cards show no poster, fine while every preview needs JS to play anyway
+  var near = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.poster = e.target.dataset.poster;
+      near.unobserve(e.target);
+    });
+  }, { rootMargin: '800px 0px' });
+  vids.forEach(function (v) { near.observe(v); });
   if (btn) btn.addEventListener('click', function () {
     held = !held;
     btn.textContent = held ? 'Play previews' : 'Pause previews';
