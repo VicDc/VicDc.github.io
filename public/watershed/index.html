@@ -8,6 +8,7 @@
 <meta name="theme-color" content="#14121f">
 <link rel="canonical" href="https://vicdc.vicio-dicara.workers.dev/watershed/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/assets/fonts/geologica-latin.woff2" as="font" type="font/woff2" crossorigin>
 <meta property="og:title" content="Watershed-AI, Vicio Di Cara">
 <meta property="og:description" content="Deterministic terrain-analysis pipeline: from a DEM to the best flood-injection point, ranked by cellular-automata simulation. Case study.">
 <meta property="og:image" content="https://vicdc.vicio-dicara.workers.dev/assets/img/thumbs/watershed.jpg">
@@ -73,12 +74,12 @@
     <div class="sec-head"><h2 id="visuals-h">Simulations</h2></div>
     <div class="gallery wide">
       <figure class="shot"><video data-ph="tall" src="../assets/img/watershed/flood-3d-satellite.mp4" poster="../assets/img/watershed/flood-3d-satellite-poster.jpg" autoplay muted loop playsinline aria-label="3D flood simulation animated over satellite imagery"></video><figcaption>Flood expansion over real satellite terrain, 3D view</figcaption></figure>
-      <figure class="shot"><img data-ph="tall" src="../assets/img/watershed/flood-2d.gif" alt="Top-down flood expansion animation"><figcaption>Cellular-automata water spread, top-down</figcaption></figure>
+      <figure class="shot"><img loading="lazy" data-ph="tall" src="../assets/img/watershed/flood-2d.gif" alt="Top-down flood expansion animation"><figcaption>Cellular-automata water spread, top-down</figcaption></figure>
     </div>
     <div class="gallery">
-      <figure class="shot"><img data-ph src="../assets/img/watershed/dem-candidates.png" alt="DEM with detected candidate injection points"><figcaption>Candidate points, filtered by prominence</figcaption></figure>
-      <figure class="shot"><img data-ph src="../assets/img/watershed/ranking-map.png" alt="Final ranking map with winning candidate"><figcaption>Final ranking, winner marked</figcaption></figure>
-      <figure class="shot"><img data-ph src="../assets/img/watershed/comparison-chart.png" alt="Flooded area over time compared across candidates"><figcaption>Area(t) curves across candidates</figcaption></figure>
+      <figure class="shot"><img loading="lazy" data-ph src="../assets/img/watershed/dem-candidates.png" alt="DEM with detected candidate injection points"><figcaption>Candidate points, filtered by prominence</figcaption></figure>
+      <figure class="shot"><img loading="lazy" data-ph src="../assets/img/watershed/ranking-map.png" alt="Final ranking map with winning candidate"><figcaption>Final ranking, winner marked</figcaption></figure>
+      <figure class="shot"><img loading="lazy" data-ph src="../assets/img/watershed/comparison-chart.png" alt="Flooded area over time compared across candidates"><figcaption>Area(t) curves across candidates</figcaption></figure>
     </div>
   </div>
 </section>
