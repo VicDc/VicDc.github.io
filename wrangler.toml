@@ -1,0 +1,32 @@
+name = "vicdc"
+main = "src/worker.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+not_found_handling = "404-page"
+run_worker_first = ["/api/*"]
+
+[vars]
+# Without a verified domain, change this only after checking what Resend allows.
+NOTIFY_FROM = "Richieste sito <onboarding@resend.dev>"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "vicdc-richieste"
+# Replace with the id printed by: npx wrangler d1 create vicdc-richieste
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
+
+[[ratelimits]]
+name = "RATE_LIMITER"
+namespace_id = "1001"
+
+[ratelimits.simple]
+limit = 3
+period = 60
+
+[observability]
+enabled = true
