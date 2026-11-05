@@ -1,0 +1,16 @@
+{
+  "name": "vicdc-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "test": "node --test",
+    "check-links": "node scripts/check-links.mjs",
+    "db:migrate:local": "wrangler d1 migrations apply vicdc-richieste --local",
+    "db:migrate": "wrangler d1 migrations apply vicdc-richieste --remote",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.158.0"
+  }
+}
